@@ -1,9 +1,7 @@
 # Analytical Solution for the Neutron Point Kinetics Equations with Ramp Reactivity
 
 The present repository contains the Python 3 codes associated with the development of a new analytical solution for the Neutron Point Kinetics Equations (NPKE), considering a single group of delayed neutron precursors and a linear ramp reactivity of the form  
-$$
-\rho(t) = a t + b.
-$$
+$$ \rho(t) = a t + b $$
 
 These codes accompany the manuscript  
 *Analytical solutions of the Neutron Point Kinetics Equations under a linear reactivity ramp*,  
