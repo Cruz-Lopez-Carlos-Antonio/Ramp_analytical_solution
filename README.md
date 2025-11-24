@@ -19,6 +19,24 @@ The repository contains five Python scripts. Each one implements a different com
 
 This script implements the analytical solution of the neutron density n(t) using SciPy and NumPy, based on the following integral representation:
 
+$$
+\begin{aligned}
+n(t)=\;&
+K_{1}\,e^{-\lambda t}
+\int_0^\infty e^{-y^{2}/2+\mathcal{E}_{3}(t)\,y}\, y^{\lambda\beta/a}\,dy
+\\[4pt]
+&+K_{2}\,e^{-\lambda t}
+\int_0^\infty e^{-y^{2}/2-\mathcal{E}_{3}(t)\,y}\,y^{\lambda\beta/a}\,dy
+\\[4pt]
+&+B_{p,1}
+\int_0^\infty 
+\exp\!\left[
+-\frac{1}{a}\left(\frac{\Lambda}{2}s^{2}+(\beta-b-at)s\right)
+\right]
+\,(s+\lambda)^{\lambda\beta/a}\,ds.
+\end{aligned}
+$$
+
 ![Analytical solution for n(t)](equation_nt.png)
 
 The code evaluates these integrals numerically using `scipy.integrate.quad` and determines the constants K₁ and K₂ through a least-squares procedure.
