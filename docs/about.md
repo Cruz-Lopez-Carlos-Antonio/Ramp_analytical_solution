@@ -6,8 +6,9 @@ title: About
 ## Authors
 
 - **Carlos-Antonio Cruz-López** – cacl.nucl@gmail.com  
-- **Gilberto Espinosa-Paredes**  
-- **Juan-Luis François**
+- **Gilberto Espinosa-Paredes** – gepe@xanum.uam.mx 
+- **Claudia Andrea Vidales-Basurto** – claudia.vidales@cimat.mx
+- **Guillermo Sánchez Lozano**–guillermo.sanchez@ingenieria.unam.edu
 
 This work is part of a broader research effort on analytical and fractional models for nuclear reactor dynamics.
 
