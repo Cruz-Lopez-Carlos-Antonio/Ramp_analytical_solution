@@ -11,8 +11,9 @@ Unless otherwise noted, all scripts are released under the **MIT License**.
 
 **Authors:**  
 Carlos-Antonio Cruz-López (cacl.nucl@gmail.com)  
-Gilberto Espinosa-Paredes  
-Juan-Luis François  
+Gilberto Espinosa-Paredes (gepe@xanum.uam.mx)
+Claudia Andrea Vidales-Basurto (claudia.vidales@cimat.mx)
+Guillermo Sánchez Lozano (guillermo.sanchez@ingenieria.unam.edu)
 
 ---
 
