@@ -5,7 +5,7 @@ title: Main Equations
 
 ## Neutron Point Kinetics Equations
 
-We consider the NPKE with a single group of delayed neutron precursors:
+We consider the NPKE with a single group of delayed neutron precursors and a constant source $q$:
 
 $$
 \frac{dn}{dt} = \frac{\rho(t)-\beta}{\Lambda} n(t) + \lambda C(t) + q,
@@ -13,13 +13,13 @@ $$
 \frac{dC}{dt} = \frac{\beta}{\Lambda} n(t) - \lambda C(t),
 $$
 
-with a linear ramp reactivity
+with a positive linear ramp reactivity
 
 $$
-\rho(t) = a t + b.
+\rho(t) = a t + b,  a>0.
 $$
 
-Here \(\Lambda\) is the prompt generation time, \(\beta\) is the total delayed neutron fraction, \(\lambda\) the precursor decay constant, and \(q\) an external source term.
+Here $Lambda$ is the prompt generation time, \(\beta\) is the total delayed neutron fraction, \(\lambda\) the precursor decay constant, and \(q\) an external source term.
 
 ---
 
