@@ -5,10 +5,7 @@ The present repository contains the Python 3 codes associated with the developme
 These codes accompany the manuscript *Analytical solutions of the Neutron Point Kinetics Equations under a linear reactivity ramp*,  recently submitted to the **Computer Physics Communications** journal. Unless otherwise noted, all scripts are released under the **MIT License**.
 
 **Authors:**  
-Carlos-Antonio Cruz-López (cacl.nucl@gmail.com);  
-Gilberto Espinosa-Paredes (gepe@xanum.uam.mx);
-Claudia Andrea Vidales-Basurto (claudia.vidales@cimat.mx);
-Guillermo Sánchez Lozano (guillermo.sanchez@ingenieria.unam.edu);
+Carlos-Antonio Cruz-López (cacl.nucl@gmail.com); Gilberto Espinosa-Paredes (gepe@xanum.uam.mx); Claudia Andrea Vidales-Basurto (claudia.vidales@cimat.mx); Guillermo Sánchez Lozano (guillermo.sanchez@ingenieria.unam.edu);
 
 ---
 
