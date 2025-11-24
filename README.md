@@ -2,11 +2,7 @@
 
 The present repository contains the Python 3 codes associated with the development of a new analytical solution for the Neutron Point Kinetics Equations (NPKE), considering a single group of delayed neutron precursors and a linear ramp reactivity of the form  ρ(t) = a t + b.
 
-These codes accompany the manuscript  
-*Analytical solutions of the Neutron Point Kinetics Equations under a linear reactivity ramp*,  
-recently submitted to the **Computer Physics Communications** journal.
-
-Unless otherwise noted, all scripts are released under the **MIT License**.
+These codes accompany the manuscript *Analytical solutions of the Neutron Point Kinetics Equations under a linear reactivity ramp*,  recently submitted to the **Computer Physics Communications** journal. Unless otherwise noted, all scripts are released under the **MIT License**.
 
 **Authors:**  
 Carlos-Antonio Cruz-López (cacl.nucl@gmail.com)  
@@ -18,7 +14,7 @@ Guillermo Sánchez Lozano (guillermo.sanchez@ingenieria.unam.edu)
 
 ## Overview of the Repository
 
-The repository contains four Python scripts. Each one implements a different component of the analytical or numerical framework used in the manuscript.
+The repository contains five Python scripts. Each one implements a different component of the analytical or numerical framework used in the manuscript as well as the related script for performing comparisons.
 
 ---
 
