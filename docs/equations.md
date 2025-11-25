@@ -19,7 +19,7 @@ $$
 \rho(t) = a t + b,  a>0.
 $$
 
-Here $Lambda$ is the prompt generation time, \(\beta\) is the total delayed neutron fraction, \(\lambda\) the precursor decay constant, and \(q\) an external source term.
+Here $\Lambda$ is the prompt generation time, $\beta$ is the total delayed neutron fraction, $\lambda$ the precursor decay constant, and $q$ an external source term.
 
 ---
 
@@ -45,13 +45,24 @@ K_{1}\,e^{-\lambda t}
 \end{aligned}
 $$
 
-The functions \(\mathcal{E}_3(t)\) and \(B_{p,1}\), as well as the constants \(K_1\) and \(K_2\), are defined in the manuscript and are determined from the initial conditions \(n(0)\) and \(\dot n(0)\).
+For completeness, we recall that the auxiliary function $\mathcal{E}_3(t)$ arises directly from the analytical reduction of the point kinetics equation with a linear reactivity. It is defined as
+
+$$
+\mathcal{E}_3(t)
+=
+\frac{1}{\sqrt{2a\Lambda}}
+\left[
+at + b - \beta + \frac{\Lambda\lambda}{2}
+\right],
+$$
+
+which is obtained after completing the square in the exponent of the transformed equation for $n(t)$. The function $B_{p,1}$ appearing in the third integral term of $n(t)$ follows analogously from the same reduction procedure and depends linearly on the parameters $a$, $b$, $\beta$, $\Lambda$, $\lambda$ and $q$, as detailed in the associated manuscript.
 
 ---
 
 ## Delayed Neutron Precursor Concentration
 
-Once \(n(t)\) is known, the concentration of delayed neutron precursors is obtained from
+Once $n(t)$ is known, the concentration of delayed neutron precursors is obtained from
 
 $$
 C(t)
