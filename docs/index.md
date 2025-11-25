@@ -15,7 +15,7 @@ Using the Modified Integral Method (MIM). The corresponding Python 3 codes imple
 
 - An analytical representation of the neutron density $$n(t)$$ using SciPy/NumPy libraries,
 - An analytical representation of the neutron density $$n(t)$$ using the mpmath library with 32-digit precision by default.
-- The delayed neutron precursor concentration $C(t)$ 
+- The delayed neutron precursor concentration $$C(t)$$ 
 - And a high-precision Runge–Kutta 4 (RK4) reference solver.
 - The analytical solution developed by Zhang et al. (2008)
 - The analytical solution developed by Palma et al. (2010)
