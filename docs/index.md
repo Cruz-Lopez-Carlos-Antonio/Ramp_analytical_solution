@@ -8,15 +8,17 @@ title: Overview
 This site documents a new analytical solution for the Neutron Point Kinetics Equations (NPKE) with a linear ramp reactivity of the form
 
 $$
-\rho(t) = a t + b, \quad a>0.
+\rho(t) = a t + b, \quad a>0,
 $$
 
-The corresponding Python 3 codes implement:
+Using the Modified Integral Method (MIM). The corresponding Python 3 codes implement:
 
 - An analytical representation of the neutron density $$n(t)$$ using SciPy/NumPy libraries,
 - An analytical representation of the neutron density $$n(t)$$ using the mpmath library with 32-digit precision by default.
 - The delayed neutron precursor concentration $C(t)$ 
 - And a high-precision Runge–Kutta 4 (RK4) reference solver.
+- The analytical solution developed by Zhang et al. (2008)
+- The analytical solution developed by Palma et al. (2010)
 
 These results accompany the manuscript:  
 ***Analytical solutions of the Neutron Point Kinetics Equations under a linear reactivity ramp***,  
