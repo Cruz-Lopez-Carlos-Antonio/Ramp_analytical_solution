@@ -51,7 +51,7 @@ K_{1}\,e^{-\lambda t}
 \end{aligned}
 $$
 
-For completeness, we recall that the auxiliary function $\mathcal{E}_3(t)$ arises directly from the analytical reduction of the point kinetics equation with a linear reactivity. It is defined as
+For completeness, we recall that the auxiliary function $$\mathcal{E}_3(t)$$ arises directly from the analytical reduction of the point kinetics equation with a linear reactivity. It is defined as
 
 $$
 \mathcal{E}_3(t)
@@ -62,13 +62,13 @@ at + b - \beta + \frac{\Lambda\lambda}{2}
 \right],
 $$
 
-which is obtained after completing the square in the exponent of the transformed equation for $n(t)$. The function $B_{p,1}$ appearing in the third integral term of $n(t)$ follows analogously from the same reduction procedure and depends linearly on the parameters $a$, $b$, $\beta$, $\Lambda$, $\lambda$ and $q$, as detailed in the associated manuscript.
+which is obtained after completing the square in the exponent of the transformed equation for $n(t)$. The function $B_{p,1}$ appearing in the third integral term of $$n(t)$$ follows analogously from the same reduction procedure and depends linearly on the parameters $$a$$, $$b$$, $$\beta$$, $$\Lambda$$, $$\lambda$$ and $$q$$, as detailed in the associated manuscript.
 
 ---
 
 ## Delayed Neutron Precursor Concentration
 
-Once $n(t)$ is known, the concentration of delayed neutron precursors is obtained from
+Once $$n(t)$$ is known, the concentration of delayed neutron precursors is obtained from
 
 $$
 C(t)
@@ -91,6 +91,6 @@ $$
 \frac{dC}{dt}=\frac{\beta}{\Lambda}\,n(t)-\lambda\,C(t),
 $$
 
-with the same ramp reactivity \(\rho(t)=at+b\).  
+with the same ramp reactivity $$\rho(t)=at+b$$.  
 
 Further details and numerical parameters are provided in the **Validation** page.
