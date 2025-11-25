@@ -5,7 +5,7 @@ title: Main Equations
 
 ## Neutron Point Kinetics Equations
 
-We consider the NPKE with a single group of delayed neutron precursors and a constant source $q$:
+We consider the NPKE with a single group of delayed neutron precursors and a constant source $$q$$:
 
 $$
 \frac{dn}{dt} = \frac{\rho(t)-\beta}{\Lambda} n(t) + \lambda C(t) + q,
