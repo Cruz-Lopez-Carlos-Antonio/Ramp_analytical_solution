@@ -7,6 +7,12 @@ title: Main Equations
 
 We consider the NPKE with a single group of delayed neutron precursors and a constant source $$q$$:
 
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
+$$
+n(t)=K_1 e^{-\lambda t}\int_0^\infty e^{-y^2/2 + \mathcal{E}_3(t)\,y}y^{\lambda\beta/a}\,dy
+$$
+</div>
+
 $$
 \frac{dn}{dt} = \frac{\rho(t)-\beta}{\Lambda} n(t) + \lambda C(t) + q,
 \qquad
