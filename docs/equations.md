@@ -16,7 +16,7 @@ $$
 with a positive linear ramp reactivity
 
 $$
-\rho(t) = a t + b,  a>0.
+\rho(t) = a t + b,  \quad a>0.
 $$
 
 Here $\Lambda$ is the prompt generation time, $\beta$ is the total delayed neutron fraction, $\lambda$ the precursor decay constant, and $q$ an external source term.
@@ -25,7 +25,7 @@ Here $\Lambda$ is the prompt generation time, $\beta$ is the total delayed neutr
 
 ## Integral Representation of \(n(t)\)
 
-The analytical solution for the neutron density \(n(t)\) can be written as
+The analytical solution for the neutron density $$n(t)$$ can be written as
 
 $$
 \begin{aligned}
