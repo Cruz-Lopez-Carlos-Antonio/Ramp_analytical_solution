@@ -5,8 +5,8 @@ title: Python Codes
 
 ## Overview of the Python Scripts
 
-The repository contains four main Python 3 scripts.  
-They implement the analytical solution for \(n(t)\), the associated delayed neutron precursor concentration \(C(t)\), and an RK4 reference solution.
+The repository contains seven main Python 3 scripts.  
+They implement the analytical solution for $$n(t)$$ and the associated delayed neutron precursor concentration $$C(t)$$, both developed with the Modified Integration Method proposed in the submited paper. A RK4 reference solution, as well as the computational implementation of the Zhang et al. (2008) and the Palma et al. (2010) solutions. 
 
 ---
 
