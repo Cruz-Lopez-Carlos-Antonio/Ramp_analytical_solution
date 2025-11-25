@@ -22,11 +22,11 @@ The script also contains a linear system, derived from the initial conditions $$
 
 ### 2. `Neutron_density_mpmath.py`
 
-This script provides a **high-precision** version of the analytical solution for \(n(t)\), implemented with **mpmath**.  
+This script provides a **high-precision** version of the analytical solution for $$n(t)$$, implemented with **mpmath**.  
 It includes:
 
-- Multiprecision evaluation of the integrals \(I_1,\dots,I_6\),
-- A robust \(2\times 2\) linear solver with row/column scaling and Tikhonov regularization,
+- Multiprecision evaluation of the integrals $$I_1,\dots,I_6$$ described in the manuscript,
+- A robust $$2\times 2$$ linear solver with row/column scaling and Tikhonov regularization,
 - Control of the working precision through `mp.mp.dps`.
 
 This implementation is used as a benchmark to assess conditioning effects and to validate the double-precision results obtained with SciPy/NumPy.
@@ -35,7 +35,7 @@ This implementation is used as a benchmark to assess conditioning effects and to
 
 ### 3. `C_precursor_SciPyNumPy.py`
 
-This script computes the delayed neutron precursor concentration \(C(t)\) using the convolution formula
+This script computes the delayed neutron precursor concentration $$C(t)$$ using the convolution formula
 
 $$
 C(t)
@@ -45,7 +45,7 @@ C(t)
 $$
 
 The integral is evaluated numerically using `scipy.integrate.cumulative_trapezoid`.  
-The function \(n(t)\) is imported from `Neutron_density_SciPyNumPy.py`, and the script returns a vectorized approximation of \(C(t)\) over a prescribed time grid.
+The function $$n(t)$$ is imported from `Neutron_density_SciPyNumPy.py`, and the script returns a vectorized approximation of $$C(t)$$ over a prescribed time grid.
 
 ---
 
