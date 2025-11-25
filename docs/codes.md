@@ -11,12 +11,12 @@ They implement the analytical solution for $$n(t)$$ and the associated delayed n
 ---
 
 ### 1. `Neutron_density_SciPyNumPy.py`
-[Link](https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/Neutron_density_SciPyNumPy.py)
+[Link to access to the code](https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/Neutron_density_SciPyNumPy.py)
 
-This script implements the analytical solution of the neutron density \(n(t)\) using **SciPy** and **NumPy**.  
+This script implements the analytical solution of the neutron density $$n(t)$$ using **SciPy** and **NumPy**.  
 The core of the implementation is based on the integral representation shown in the *Equations* page, where the involved integrals are evaluated using `scipy.integrate.quad`.
 
-The script also contains a linear system, derived from the initial conditions \(n(0)\) and \(\dot n(0)\), to determine the constants \(K_1\) and \(K_2\) via a least-squares procedure (`numpy.linalg.lstsq`), including column-wise normalization for numerical stability.
+The script also contains a linear system, derived from the initial conditions $$n(0)$$ and $$\dot n(0)$$, to determine the constants $$K_1$$ and $$K_2$$ via a least-squares procedure (`numpy.linalg.lstsq`), including column-wise normalization for numerical stability.
 
 ---
 
