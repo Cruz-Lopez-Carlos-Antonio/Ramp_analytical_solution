@@ -7,9 +7,11 @@ title: Overview
 
 This site documents a new analytical solution for the Neutron Point Kinetics Equations (NPKE) with a linear ramp reactivity of the form
 
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
 \rho(t) = a t + b, \quad a>0,
 $$
+</div>
 
 Using the Modified Integral Method (MIM). The corresponding Python 3 codes implement:
 
