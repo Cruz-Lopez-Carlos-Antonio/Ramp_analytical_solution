@@ -19,11 +19,11 @@ $$
 \rho(t) = a t + b,  \quad a>0.
 $$
 
-Here $\Lambda$ is the prompt generation time, $\beta$ is the total delayed neutron fraction, $\lambda$ the precursor decay constant, and $q$ an external source term.
+Here $$\Lambda$$ is the prompt generation time, $$\beta$$ is the total delayed neutron fraction and $$\lambda$$.
 
 ---
 
-## Integral Representation of \(n(t)\)
+## Modified Integration Method (MIM) and Integral Representation of $$n(t)$$
 
 The analytical solution for the neutron density $$n(t)$$ can be written as
 
