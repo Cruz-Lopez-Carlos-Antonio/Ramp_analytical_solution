@@ -28,6 +28,18 @@ that was recently submitted to the journal *Computer Physics Communications*.
 
 You can use the navigation bar above to explore:
 
+<div style="background:#f8f8f8; padding:15px; border-radius:10px; border:1px solid #d0d0d0;">
+  <h4 style="margin-top:0;">Analytical expression for \(n(t)\)</h4>
+  $$
+  n(t)=K_1 e^{-\lambda t}\int_0^\infty e^{-y^2/2 + \mathcal{E}_3(t)\,y}y^{\lambda\beta/a}\,dy
+  $$
+  <ul style="margin-top:10px;">
+    <li>Derived from the reduced form of the NPKE</li>
+    <li>Uses a change of variables and integral transforms</li>
+    <li>Depends on constants \(K_1, K_2\) fixed by the initial conditions</li>
+  </ul>
+</div>
+
 - **Equations** – main analytical expressions used in the article,  
 - **Codes** – a summary of the Python scripts in the repository,  
 - **Validation** – comparison with a high-precision RK4 benchmark,  
