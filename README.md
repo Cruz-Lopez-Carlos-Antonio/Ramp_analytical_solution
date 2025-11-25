@@ -18,7 +18,6 @@ Carlos-Antonio Cruz-López (cacl.nucl@gmail.com); Gilberto Espinosa-Paredes (gep
   </p>
   <p>
     <a href="https://<TU-USUARIO>.github.io/<TU-REPO>/" target="_blank" style="font-size: 18px; font-weight: bold;">
-      👉 https://<TU-USUARIO>.github.io/<TU-REPO>/
-    </a>
+      👉 https://cruz-lopez-carlos-antonio.github.io/Ramp_analytical_solution/index.html
   </p>
 </div>
