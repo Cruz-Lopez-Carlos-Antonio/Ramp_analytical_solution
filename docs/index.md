@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Overview
+math: true
 ---
-
 # Overview
 
 This repository documents a new analytical solution for the Neutron Point Kinetics Equations (NPKE), in the form: 
