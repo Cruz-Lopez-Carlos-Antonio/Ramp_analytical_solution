@@ -86,7 +86,7 @@ You can use the navigation bar above to explore:
     </div>
   </a>
 
-  <a href "{{ '/validation/' | relative_url }}" style="text-decoration:none; color:inherit;">
+  <a href="{{ '/validation/' | relative_url }}" style="text-decoration:none; color:inherit;">
     <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem; cursor:pointer;">
       <strong>Validation</strong><br/>
       <span style="font-size:0.95rem; color:#555;">
