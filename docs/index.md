@@ -105,4 +105,5 @@ You can use the navigation bar above to explore:
   </a>
 
 </div>
+
 For more details of the derivation and the computational implementation, please see the manuscript. 
