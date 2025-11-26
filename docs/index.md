@@ -5,7 +5,7 @@ title: Overview
 
 ## Overview
 
-This repository documents a new analytical solution for the Neutron Point Kinetics Equations (NPKE) 
+This repository documents a new analytical solution for the Neutron Point Kinetics Equations (NPKE), in the form: 
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
@@ -13,15 +13,19 @@ $$
 $$
 </div>
 
-with a linear ramp reactivity of the form
+with a linear ramp reactivity given by
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
-\rho(t) = a t + b, \quad a>0,
+\rho(t) = a t + b, \quad a>0.
 $$
 </div>
 
-Using the Modified Integral Method (MIM). The corresponding Python 3 codes implement:
+The analytical solution is obtained using the Modified Integral Method (MIM). 
+
+### Content
+
+The corresponding Python 3 codes included in the present repository are:
 
 - An analytical representation of the neutron density $$n(t)$$ using SciPy/NumPy libraries,
 - An analytical representation of the neutron density $$n(t)$$ using the mpmath library with 32-digit precision by default.
