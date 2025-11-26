@@ -9,7 +9,7 @@ This repository documents a new analytical solution for the Neutron Point Kineti
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
-\begin{matrix}\dfrac{dn\left(t\right)}{dt}&=&\frac{\rho\left(t\right)-\beta}{\Lambda}n\left(t\right)+\lambda C\left(t\right)+q,\\\dfrac{dC\left(t\right)}{dt}&=&\frac{\beta}{\Lambda}n\left(t\right)-\lambda C\left(t\right).\\\end{matrix}\  
+\begin{matrix}\dfrac{dn\left(t\right)}{dt}&=&\dfrac{\rho\left(t\right)-\beta}{\Lambda}n\left(t\right)+\lambda C\left(t\right)+q,\\\dfrac{dC\left(t\right)}{dt}&=&\frac{\beta}{\Lambda}n\left(t\right)-\lambda C\left(t\right).\\\end{matrix}\  
 $$
 </div>
 
