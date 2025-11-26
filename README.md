@@ -11,13 +11,10 @@ Carlos-Antonio Cruz-López (cacl.nucl@gmail.com); Gilberto Espinosa-Paredes (gep
 
 ## Overview of the Repository
 
-<div style="border: 2px solid #3c6e71; padding: 15px; border-radius: 10px; background: #f0f0f0;">
-  <h3>📘 Full Documentation</h3>
-  <p>
-    Visit the project website for equations, code descriptions, validation tables and more:
-  </p>
-  <p>
-    <a href="https://<TU-USUARIO>.github.io/<TU-REPO>/" target="_blank" style="font-size: 18px; font-weight: bold;">
-      👉 https://cruz-lopez-carlos-antonio.github.io/Ramp_analytical_solution/index.html
-  </p>
-</div>
+<a href="https://cruz-lopez-carlos-antonio.github.io/Ramp_analytical_solution/index.html"
+   target="_blank" 
+   rel="noopener noreferrer"
+   style="display:inline-block; padding:10px; background:#e3f2fd; 
+          border-radius:8px; border:1px solid #90caf9; font-size:16px;">
+   📘 Visit the project website for equations, code descriptions, validation tables and more
+</a>
