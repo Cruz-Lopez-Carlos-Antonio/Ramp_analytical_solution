@@ -3,7 +3,7 @@ layout: default
 title: Overview
 ---
 
-## Overview
+# Overview
 
 This repository documents a new analytical solution for the Neutron Point Kinetics Equations (NPKE), in the form: 
 
@@ -23,7 +23,7 @@ $$
 
 The analytical solution is obtained using the Modified Integral Method (MIM). 
 
-### Content
+## Python Codes and Implementations
 
 <div style="margin: 1.5rem 0; padding: 1.25rem 1.5rem; background:#fafafa; border-radius:10px; border:1px solid #e0e0e0;">
   <h3 style="margin-top:0; margin-bottom:0.75rem; font-size:1.1rem;">
@@ -58,7 +58,7 @@ The analytical solution is obtained using the Modified Integral Method (MIM).
   </ul>
 </div>
 
-### The related article
+## The related article
 
 These results accompany the manuscript:  
 ***Analytical solutions of the Neutron Point Kinetics Equations under a linear reactivity ramp***,  
