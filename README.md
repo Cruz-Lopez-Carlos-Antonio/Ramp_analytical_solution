@@ -1,4 +1,4 @@
-# A New Analytical Solution to the Neutron Point Kinetics Equations for Linear Ramp Reactivity: $\rho(t)=a t+b$. A Theoretical and Computational Framework
+# Analytical Solution to the Neutron Point Kinetics Equations for Linear Ramp Reactivity
 
 The present repository contains the Python 3 codes associated with the development of a new analytical solution for the Neutron Point Kinetics Equations (NPKE), considering a single group of delayed neutron precursors and a linear ramp reactivity of the form  ρ(t) = a t + b.
 
