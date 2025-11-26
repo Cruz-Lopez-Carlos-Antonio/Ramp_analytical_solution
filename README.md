@@ -11,11 +11,11 @@ Carlos-Antonio Cruz-López (cacl.nucl@gmail.com); Gilberto Espinosa-Paredes (gep
 
 ## Overview of the Repository
 
-<a href="https://cruz-lopez-carlos-antonio.github.io/Ramp_analytical_solution/"
-   target="_blank"
-   rel="noopener noreferrer"
-   style="display:inline-block; padding:10px 15px; background:#e8f0fe; 
-          border-radius:6px; border:1px solid #8ab4f8; 
-          font-size:16px; text-decoration:none;">
-   📘 Open full documentation in this link (a new page will be open)
-</a>
+<div style="background:#f1f7ff; padding:12px 15px; border-left:4px solid #4a90e2; border-radius:8px; margin-top:20px;">
+  <strong>📘 Full Documentation</strong><br>
+  The complete project website (opens in a new page) is available here:<br><br>
+  👉 <a href="https://cruz-lopez-carlos-antonio.github.io/Ramp_analytical_solution/"
+        target="_blank" rel="noopener noreferrer">
+        https://cruz-lopez-carlos-antonio.github.io/Ramp_analytical_solution/
+      </a>
+</div>
