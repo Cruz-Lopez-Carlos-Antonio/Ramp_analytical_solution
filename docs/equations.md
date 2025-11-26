@@ -2,6 +2,8 @@
 layout: default
 title: Main Equations
 ---
+# Overview of the methodology
+
 
 ## Neutron Point Kinetics Equations
 
