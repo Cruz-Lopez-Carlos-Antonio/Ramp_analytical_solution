@@ -17,5 +17,5 @@ Carlos-Antonio Cruz-López (cacl.nucl@gmail.com); Gilberto Espinosa-Paredes (gep
    style="display:inline-block; padding:10px 15px; background:#e8f0fe; 
           border-radius:6px; border:1px solid #8ab4f8; 
           font-size:16px; text-decoration:none;">
-   📘 Open full documentation
+   📘 Open full documentation in this link (a new page will be open)
 </a>
