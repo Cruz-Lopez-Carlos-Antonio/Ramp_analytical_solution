@@ -13,6 +13,9 @@ Carlos-Antonio Cruz-López (cacl.nucl@gmail.com); Gilberto Espinosa-Paredes (gep
 
 <a href="https://cruz-lopez-carlos-antonio.github.io/Ramp_analytical_solution/"
    target="_blank"
-   rel="noopener noreferrer">
-   👉 Open documentation in a new tab
+   rel="noopener noreferrer"
+   style="display:inline-block; padding:10px 15px; background:#e8f0fe; 
+          border-radius:6px; border:1px solid #8ab4f8; 
+          font-size:16px; text-decoration:none;">
+   📘 Open full documentation
 </a>
