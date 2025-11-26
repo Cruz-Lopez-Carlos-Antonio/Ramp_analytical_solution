@@ -68,7 +68,7 @@ You can use the navigation bar above to explore:
 
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0.9rem; margin:1rem 0;">
 
-  <a href="{{ '/equations/' | relative_url }}" style="text-decoration:none; color:inherit;">
+  <a href="{{ '/equations.html' | relative_url }}" style="text-decoration:none; color:inherit;">
     <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem; cursor:pointer;">
       <strong>Equations</strong><br/>
       <span style="font-size:0.95rem; color:#555;">
@@ -77,7 +77,7 @@ You can use the navigation bar above to explore:
     </div>
   </a>
 
-  <a href="{{ '/codes/' | relative_url }}" style="text-decoration:none; color:inherit;">
+  <a href="{{ '/codes.html' | relative_url }}" style="text-decoration:none; color:inherit;">
     <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem; cursor:pointer;">
       <strong>Codes</strong><br/>
       <span style="font-size:0.95rem; color:#555;">
@@ -86,7 +86,7 @@ You can use the navigation bar above to explore:
     </div>
   </a>
 
-  <a href="{{ '/validation/' | relative_url }}" style="text-decoration:none; color:inherit;">
+  <a href="{{ '/validation.html' | relative_url }}" style="text-decoration:none; color:inherit;">
     <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem; cursor:pointer;">
       <strong>Validation</strong><br/>
       <span style="font-size:0.95rem; color:#555;">
@@ -95,7 +95,7 @@ You can use the navigation bar above to explore:
     </div>
   </a>
 
-  <a href="{{ '/about/' | relative_url }}" style="text-decoration:none; color:inherit;">
+  <a href="{{ '/about.html' | relative_url }}" style="text-decoration:none; color:inherit;">
     <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem; cursor:pointer;">
       <strong>About</strong><br/>
       <span style="font-size:0.95rem; color:#555;">
@@ -105,5 +105,6 @@ You can use the navigation bar above to explore:
   </a>
 
 </div>
+
 
 For more details of the derivation and the computational implementation, please see the manuscript. 
