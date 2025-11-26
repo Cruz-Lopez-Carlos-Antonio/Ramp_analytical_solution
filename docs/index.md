@@ -67,30 +67,42 @@ that was recently submitted to the journal *Computer Physics Communications*.
 You can use the navigation bar above to explore:
 
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0.9rem; margin:1rem 0;">
-  <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem;">
-    <strong>Equations</strong><br/>
-    <span style="font-size:0.95rem; color:#555;">
-      Main analytical expressions and key formulae used in the article.
-    </span>
-  </div>
-  <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem;">
-    <strong>Codes</strong><br/>
-    <span style="font-size:0.95rem; color:#555;">
-      Summary of the Python scripts, interfaces, and numerical settings.
-    </span>
-  </div>
-  <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem;">
-    <strong>Validation</strong><br/>
-    <span style="font-size:0.95rem; color:#555;">
-      Comparison against the high-precision RK4 benchmark and analytical references.
-    </span>
-  </div>
-  <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem;">
-    <strong>About</strong><br/>
-    <span style="font-size:0.95rem; color:#555;">
-      Authorship, affiliations, and financial support acknowledgements.
-    </span>
-  </div>
-</div>
 
+  <a href="{{ '/equations/' | relative_url }}" style="text-decoration:none; color:inherit;">
+    <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem; cursor:pointer;">
+      <strong>Equations</strong><br/>
+      <span style="font-size:0.95rem; color:#555;">
+        Main analytical expressions and key formulae used in the article.
+      </span>
+    </div>
+  </a>
+
+  <a href="{{ '/codes/' | relative_url }}" style="text-decoration:none; color:inherit;">
+    <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem; cursor:pointer;">
+      <strong>Codes</strong><br/>
+      <span style="font-size:0.95rem; color:#555;">
+        Summary of the Python scripts, interfaces, and numerical settings.
+      </span>
+    </div>
+  </a>
+
+  <a href "{{ '/validation/' | relative_url }}" style="text-decoration:none; color:inherit;">
+    <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem; cursor:pointer;">
+      <strong>Validation</strong><br/>
+      <span style="font-size:0.95rem; color:#555;">
+        Comparison against the high-precision RK4 benchmark and analytical references.
+      </span>
+    </div>
+  </a>
+
+  <a href="{{ '/about/' | relative_url }}" style="text-decoration:none; color:inherit;">
+    <div style="background:#fafafa; border:1px solid #e0e0e0; border-radius:10px; padding:0.75rem 0.9rem; cursor:pointer;">
+      <strong>About</strong><br/>
+      <span style="font-size:0.95rem; color:#555;">
+        Authorship, affiliations, and financial support acknowledgements.
+      </span>
+    </div>
+  </a>
+
+</div>
 For more details of the derivation and the computational implementation, please see the manuscript. 
