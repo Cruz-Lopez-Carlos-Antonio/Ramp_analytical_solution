@@ -7,25 +7,19 @@ title: Main Equations
 
 ## Neutron Point Kinetics Equations
 
-We consider the NPKE with a single group of delayed neutron precursors and a constant source $$q$$:
-
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
-n(t)=K_1 e^{-\lambda t}\int_0^\infty e^{-y^2/2 + \mathcal{E}_3(t)\,y}y^{\lambda\beta/a}\,dy
+\begin{matrix}\dfrac{dn\left(t\right)}{dt}&=&\frac{\rho\left(t\right)-\beta}{\Lambda}n\left(t\right)+\lambda C\left(t\right)+q,\\\dfrac{dC\left(t\right)}{dt}&=&\frac{\beta}{\Lambda}n\left(t\right)-\lambda C\left(t\right).\\\end{matrix}\  
 $$
 </div>
 
-$$
-\frac{dn}{dt} = \frac{\rho(t)-\beta}{\Lambda} n(t) + \lambda C(t) + q,
-\qquad
-\frac{dC}{dt} = \frac{\beta}{\Lambda} n(t) - \lambda C(t),
-$$
+with a linear ramp reactivity given by
 
-with a positive linear ramp reactivity
-
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
-\rho(t) = a t + b,  \quad a>0.
+\rho(t) = a t + b, \quad a>0.
 $$
+</div>
 
 Here $$\Lambda$$ is the prompt generation time, $$\beta$$ is the total delayed neutron fraction and $$\lambda$$.
 
