@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Main Equations
+math: true
 ---
 # Overview of the methodology
 
