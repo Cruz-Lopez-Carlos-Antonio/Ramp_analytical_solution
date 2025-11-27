@@ -5,15 +5,15 @@ math: true
 ---
 # Overview
 
-This repository documents a new analytical solution for the Neutron Point Kinetics Equations (NPKE), written as: 
+This repository documents a new analytical solution for the following system of differential equations: 
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
-\begin{matrix}\dfrac{dn\left(t\right)}{dt}&=&\dfrac{\rho\left(t\right)-\beta}{\Lambda}n\left(t\right)+\lambda C\left(t\right)+q,\\\dfrac{dC\left(t\right)}{dt}&=&\dfrac{\beta}{\Lambda}n\left(t\right)-\lambda C\left(t\right).\\\end{matrix}\  
+\begin{matrix}\dfrac{dn\left(t\right)}{dt}&=&\dfrac{\rho\left(t\right)-\beta}{\Lambda}n\left(t\right)+\lambda C\left(t\right)+q,\\\dfrac{dC\left(t\right)}{dt}&=&\dfrac{\beta}{\Lambda}n\left(t\right)-\lambda C\left(t\right).\\\end{matrix}\, 
 $$
 </div>
 
-with a linear ramp reactivity given by
+known as the Neutron Point Kinetic Equations (NPKE), with a single group of precursors. Suchs analytical solution corresponds to the particular case of a linear ramp reactivity, $$\rho(t)=at+b$$, given by:
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
@@ -21,7 +21,7 @@ $$
 $$
 </div>
 
-The analytical solution is obtained using the Modified Integral Method (MIM). 
+and it was obtained using the Modified Integral Method (MIM). 
 
 ## Python Codes and Implementations
 
