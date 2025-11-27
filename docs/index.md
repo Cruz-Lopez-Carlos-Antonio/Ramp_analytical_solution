@@ -54,7 +54,9 @@ known as the Neutron Point Kinetic Equations (NPKE). Such analytical solution co
 
 These results accompany the manuscript:  
 
-<div class="article-title-box" markdown="1">
+<div style="display:inline-block; padding:0.6em 0.9em; margin:0.4em 0;
+            background-color:#f5f5f5; border:1px solid #dddddd; border-radius:6px;"
+     markdown="1">
 ***A New Analytical Solution to the Neutron Point Kinetics Equations for Linear Ramp Reactivity: $$\rho(t)=a t + b$$. A Theoretical and Computational Framework***
 </div>
 
