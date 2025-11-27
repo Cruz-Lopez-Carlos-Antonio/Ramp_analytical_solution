@@ -5,7 +5,7 @@ math: true
 ---
 # Overview
 
-This repository documents a new analytical solution for the following system of differential equations: 
+The present repository documents the computational implementation of a new analytical solution of the following system of differential equations: 
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
@@ -13,15 +13,7 @@ $$
 $$
 </div>
 
-known as the Neutron Point Kinetic Equations (NPKE), with a single group of precursors. Suchs analytical solution corresponds to the particular case of a linear ramp reactivity, $$\rho(t)=at+b$$, given by:
-
-<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
-$$
-\rho(t) = a t + b, \quad a>0.
-$$
-</div>
-
-and it was obtained using the Modified Integral Method (MIM). 
+known as the Neutron Point Kinetic Equations (NPKE). Such analytical solution corresponds to the particular case of a linear ramp reactivity, $$\rho(t)=at+b$ and was obtained using the Modified Integral Method (MIM). 
 
 ## Python Codes and Implementations
 
@@ -109,5 +101,5 @@ You can use the navigation bar above to explore:
 
 <div style="border-left: 4px solid #f39c12; padding: 0.7em 1em; background: #fff7e6;">
 <b style="color:#c0392b;">⚠️  Important:</b><br>
-For more details of the derivation and the computational implementation, please see the manuscript.
+For more details of the derivation of the analytical solution, its computational implementation as well as a numerical analysis, please see the manuscript mentioned above.
 </div>
