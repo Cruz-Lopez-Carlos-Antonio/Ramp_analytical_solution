@@ -4,17 +4,18 @@ title: Main Equations
 math: true
 ---
 # Overview of the methodology
-
+The present section contains the main equations used in the present work. Please, see the full manuscript for a more detailed description of them.
 
 ## Neutron Point Kinetics Equations
+The Neutron Point Kinetic Equations with a single group of delayed neutron precursors are given as:
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
-\begin{matrix}\dfrac{dn\left(t\right)}{dt}&=&\frac{\rho\left(t\right)-\beta}{\Lambda}n\left(t\right)+\lambda C\left(t\right)+q,\\\dfrac{dC\left(t\right)}{dt}&=&\frac{\beta}{\Lambda}n\left(t\right)-\lambda C\left(t\right).\\\end{matrix}\  
+\begin{matrix}\dfrac{dn\left(t\right)}{dt}&=&\frac{\rho\left(t\right)-\beta}{\Lambda}n\left(t\right)+\lambda C\left(t\right)+q,\\\dfrac{dC\left(t\right)}{dt}&=&\frac{\beta}{\Lambda}n\left(t\right)-\lambda C\left(t\right).\\\end{matrix}\ .  
 $$
 </div>
 
-with a linear ramp reactivity given by
+Here $$\Lambda$$ is the prompt generation time, $$\beta$$ is the total delayed neutron fraction and $$\lambda$$. In the present case, the ramp reactivity, $$\rho(t)$$ has the following linear form:
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
@@ -22,13 +23,16 @@ $$
 $$
 </div>
 
-Here $$\Lambda$$ is the prompt generation time, $$\beta$$ is the total delayed neutron fraction and $$\lambda$$.
-
 ---
 
-## Modified Integration Method (MIM) and Integral Representation of $$n(t)$$
+## Modified Integration Method (MIM) 
 
-The analytical solution for the neutron density $$n(t)$$ can be written as
+The proposed solutions were developed using a more efficient, formal and advanced Modified Integration Method (MIM), originally developed by Smets (1957). Such procedure consists of assuming that analytical solutions have the following form:
+
+$$
+n\left(t\right)=\int_{\Omega}{\bar{n}\left(s\right)e^{st}ds},\ \ C_i\left(t\right)=\int_{\Omega}{{\bar{C}}_i\left(s\right)e^{st}ds}$$
+
+## Integral Representation of $$n(t)$$
 
 $$
 \begin{aligned}
