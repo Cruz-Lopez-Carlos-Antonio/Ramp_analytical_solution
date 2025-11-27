@@ -107,7 +107,6 @@ You can use the navigation bar above to explore:
 </div>
 
 
-<div style="border-left: 4px solid #f39c12; padding: 0.7em 1em; background: #fff7e6;">
-<b style="color:#c0392b;">⚠️  Important:</b><br>
-For more details of the derivation and the computational implementation, please see the manuscript.
-</div>
+> ⚠️ **Important**
+>  
+> For more details of the derivation and the computational implementation, please see the manuscript.
