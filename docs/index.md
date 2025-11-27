@@ -5,7 +5,7 @@ math: true
 ---
 # Overview
 
-This repository documents a new analytical solution for the Neutron Point Kinetics Equations (NPKE), in the form: 
+This repository documents a new analytical solution for the Neutron Point Kinetics Equations (NPKE), written as: 
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0;">
 $$
