@@ -13,13 +13,13 @@ $$
 $$
 </div>
 
-known as the Neutron Point Kinetic Equations (NPKE). Such analytical solution corresponds to the particular case of a linear ramp reactivity, $$\rho(t)=at+b$ and was obtained using the Modified Integral Method (MIM). 
+known as the Neutron Point Kinetic Equations (NPKE). Such analytical solution corresponds to the particular case of a linear ramp reactivity, $$\rho(t)=at+b$$ and was obtained using the Modified Integral Method (MIM). 
 
 ## Python Codes and Implementations
 
 <div style="margin: 1.5rem 0; padding: 1.25rem 1.5rem; background:#fafafa; border-radius:10px; border:1px solid #e0e0e0;">
   <h3 style="margin-top:0; margin-bottom:0.75rem; font-size:1.1rem;">
-    Python 3 implementations included in this repository
+    Python 3 implementations included in this repository:
   </h3>
 
   <ul style="margin:0; padding-left:1.2rem; list-style-type:disc;">
@@ -53,10 +53,10 @@ known as the Neutron Point Kinetic Equations (NPKE). Such analytical solution co
 ## The related article
 
 These results accompany the manuscript:  
-***Analytical solutions of the Neutron Point Kinetics Equations under a linear reactivity ramp***,  
+***A New Analytical Solution to the Neutron Point Kinetics Equations for Linear Ramp Reactivity: $$\rho(t)=a t+b$$. A Theoretical and Computational Framework***,  
 that was recently submitted to the journal *Computer Physics Communications*.
 
-You can use the navigation bar above to explore:
+You can use the navigation bar above, or the following buttons, to explore:
 
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:0.9rem; margin:1rem 0;">
 
