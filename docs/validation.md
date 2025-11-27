@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Numerical Validation
+math: true
 ---
 
 ## Purpose
