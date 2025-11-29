@@ -47,11 +47,13 @@ known as the Neutron Point Kinetic Equations (NPKE). Such analytical solution co
       <strong>Analytical benchmark solution by Palma et al. (2010)</strong><br/>
       <span>Alternative analytical solution for cross-checking the proposed method.</span>
     </li>
-    </li>
     <li style="margin:0.4rem 0;">
-      <strong>Comparative procedure related to the execution time</strong><br/>
-      <span>A comparative routine who estimates the mean execution time of the methods</span>
-    </li>
+  <strong>Comparative execution-time benchmark</strong><br/>
+  <span>
+    A dedicated performance routine that evaluates and compares the mean execution time of all methods.  
+    The implementation makes use of <code>time</code>,to quantify the computational cost of each approach.
+  </span>
+</li>
   </ul>
 </div>
 
