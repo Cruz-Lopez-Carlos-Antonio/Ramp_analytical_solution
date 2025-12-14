@@ -1,10 +1,10 @@
 import math
 import numpy as np
 from scipy.integrate import cumulative_trapezoid
-from Neutron_density_SciPyNumPy import Analytic_n  
+from Neutron_density_SciPyNumPy_ import Analytic_n  
 
 # --- Invoking the n(t) function given in ---
-#     Neutron_density_SciPyNumPy.py
+#     Neutron_density.py
 
 def make_n_func(rho_s, beta, Lambda_1, gamma_1, lambda_1, n0, dn0, source):
     def n_func(t):
@@ -34,7 +34,7 @@ if __name__ == "__main__":
     n_func = make_n_func(rho_s, beta, Lambda_1, gamma_1, lambda_1, n0, dn0, source)
 
     # --- Mesh for the numerical integration ---
-    ts = np.linspace(0.0, 1.0, 5001)  # 0 to 1 s
+    ts = np.linspace(0.0, 20.0, 2001)     # paso 0.1 s
 
     # --- Evaluation ---
     Cs = C_vector(ts, n_func, beta, Lambda_1, lambda_1, C0)
