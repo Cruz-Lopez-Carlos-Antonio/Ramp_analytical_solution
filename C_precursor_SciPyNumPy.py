@@ -1,7 +1,7 @@
 import math
 import numpy as np
 from scipy.integrate import cumulative_trapezoid
-from Neutron_density_SciPyNumPy_ import Analytic_n  
+from Neutron_density import Analytic_n  
 
 # --- Invoking the n(t) function given in ---
 #     Neutron_density.py
