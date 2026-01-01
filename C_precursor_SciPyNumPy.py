@@ -40,4 +40,4 @@ if __name__ == "__main__":
     Cs = C_vector(ts, n_func, beta, Lambda_1, lambda_1, C0)
     for t, c in zip(ts, Cs):
         if abs(t - round(t)) < 1e-12:  
-            print(f"{t:.0f} {c:.12e}")
+            print(c)
