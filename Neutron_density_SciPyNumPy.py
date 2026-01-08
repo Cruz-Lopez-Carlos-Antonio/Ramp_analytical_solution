@@ -14,19 +14,19 @@ source   = 10**8     # Source, q [n/s]
 rho_s    = -6e-5     # b factor in at+b, also rho(0) [—]  
 
 # ============================================================
-# ================ z(t, rho_0) - Eq. (84)=====================
+# ================ z(t, rho_0) - Eq. (48)=====================
 # ============================================================
 
 def z(t, rho_0, beta, Lambda_1, gamma_1, lambda_1):
     a1 = math.sqrt(gamma_1 / Lambda_1)
     return a1 * (t + (rho_0 - beta)/gamma_1 + Lambda_1*lambda_1/gamma_1)
 
-# Stability and Control epsabs/epsrel (Section 6.2)
+# Stability and Control epsabs/epsrel (Section 5.3)
 
 _QKWARGS = dict(epsabs=0.0, epsrel=1e-9, limit=200)
 
 # ============================================================
-# === Integrals - Tables 4-5, Eq. (69) ===
+# === Integrals - Tables 3, Eq. (49) ===
 # ============================================================
 
 def I_1(mu, zval):
@@ -72,7 +72,7 @@ def I_6(t, rho_0, lambda_1, beta, gamma_1, Lambda_1):
     return float(val)
 
 # ============================================================
-# === Prefactor F ====== Table 4
+# === Prefactor F ====== Table 2, 
 # ============================================================
 
 def prefactor_F(lambda_1, beta, gamma_1, Lambda_1):
@@ -80,11 +80,11 @@ def prefactor_F(lambda_1, beta, gamma_1, Lambda_1):
     return (Lambda_1/gamma_1) * (lambda_1**(-mu))
 
 # ============================================================
-# === Initial conditions - Eq. (73) ===
+# === Initial conditions - Eq. (50) ===
 # ============================================================
 
 def Constants_Ini_con(lambda_1, beta, Lambda_1, gamma_1, rho_0, n_0, dn_0, q):
-    # Linear System given in Eqs. (86-87)
+    # Linear System given in Eqs. (52-54)
     zeta = z(0.0, rho_0, beta, Lambda_1, gamma_1, lambda_1)
     mu   = lambda_1*beta/gamma_1
     Int1 = I_1(mu, zeta)
@@ -113,11 +113,11 @@ def Constants_Ini_con(lambda_1, beta, Lambda_1, gamma_1, rho_0, n_0, dn_0, q):
     return float(A1), float(A2)
 
 # ============================================================
-# === Analytical solution n(t) - Eq. (69) ===
+# === Analytical solution n(t) - Eq. (60) ===
 # ============================================================
 
 def Analytic_n(t, rho_0, beta, Lambda_1, gamma_1, lambda_1, n_0, dn_0, q):
-    # Eq. (69) 
+    # Eq. (49) 
     A1, A2 = Constants_Ini_con(lambda_1, beta, Lambda_1, gamma_1, rho_0, n_0, dn_0, q)
     mu   = lambda_1*beta/gamma_1
     zeta = z(t, rho_0, beta, Lambda_1, gamma_1, lambda_1)
@@ -140,4 +140,5 @@ if __name__ == "__main__":
     for k in times:
         val = Analytic_n(k, rho_s, beta, Lambda_1, gamma_1, lambda_1, n0, 0.0, source)
         print(val)
+
 
