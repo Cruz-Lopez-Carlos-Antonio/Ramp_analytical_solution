@@ -4,7 +4,7 @@ import numpy as np
 from scipy.integrate import quad
 import numpy.linalg as npl
 
-# --- Input parameters (Section 5, Tables 3-4) --- Based on Zhang et al. (2008, p. 748).
+# --- Input parameters (Section 5, Table 2) --- Based on Zhang et al. (2008, p. 748).
 
 gamma_1  = 0.0001    # Slope ramp, gamma [1/s]  
 beta     = 0.0075    # Fraction of precursors [—] 
@@ -140,3 +140,4 @@ if __name__ == "__main__":
     for k in times:
         val = Analytic_n(k, rho_s, beta, Lambda_1, gamma_1, lambda_1, n0, 0.0, source)
         print(val)
+
