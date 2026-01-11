@@ -140,7 +140,3 @@ if __name__ == "__main__":
     for k in times:
         val = Analytic_n(k, rho_s, beta, Lambda_1, gamma_1, lambda_1, n0, 0.0, source)
         print(val)
-
-
-
-
