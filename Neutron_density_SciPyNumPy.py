@@ -84,7 +84,7 @@ def prefactor_F(lambda_1, beta, gamma_1, Lambda_1):
 # ============================================================
 
 def Constants_Ini_con(lambda_1, beta, Lambda_1, gamma_1, rho_0, n_0, dn_0, q):
-    # Linear System given in Eqs. (52-54)
+    # Linear System given in Eqs. (50-54)
     zeta = z(0.0, rho_0, beta, Lambda_1, gamma_1, lambda_1)
     mu   = lambda_1*beta/gamma_1
     Int1 = I_1(mu, zeta)
@@ -103,17 +103,17 @@ def Constants_Ini_con(lambda_1, beta, Lambda_1, gamma_1, rho_0, n_0, dn_0, q):
     #================ Normalization Proces =================================
     col_norms = npl.norm(l1, axis=0)
     l1_scaled = l1 / col_norms
-    #====================== Eq. (89) ======================================= 
+    #====================== Eq. (52) ======================================= 
     #==================== Least Square Method ==============================
     scale_rhs = np.max(np.abs(l2)) if np.max(np.abs(l2)) != 0 else 1.0
     l2_scaled = l2 / scale_rhs
     A_scaled, *_ = npl.lstsq(l1_scaled, l2_scaled, rcond=None)
-    #==================== Back-scaling Eq. (90) ============================
+    #==================== Back-scaling Eq. (53) ============================
     A1, A2 = (A_scaled / col_norms) * scale_rhs
     return float(A1), float(A2)
 
 # ============================================================
-# === Analytical solution n(t) - Eq. (60) ===
+# === Analytical solution n(t) - Eq. (49) ===
 # ============================================================
 
 def Analytic_n(t, rho_0, beta, Lambda_1, gamma_1, lambda_1, n_0, dn_0, q):
@@ -140,6 +140,7 @@ if __name__ == "__main__":
     for k in times:
         val = Analytic_n(k, rho_s, beta, Lambda_1, gamma_1, lambda_1, n0, 0.0, source)
         print(val)
+
 
 
 
