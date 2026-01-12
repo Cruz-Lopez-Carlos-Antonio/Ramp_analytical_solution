@@ -4,7 +4,7 @@ import mpmath as mp
 mp.mp.dps = 32
 mp.mp.rounding = 'nearest'
 
-# ----------- Parameters (Zhang et al. 2008) by default --------------------
+# ----------- Parameters Zhang et al. (2008, p. 748) and Palma et al. (2009, p. 1471) by default --------------------
 gamma_1  = mp.mpf('0.0001')     # Slope ramp, gamma [1/s]
 beta     = mp.mpf('0.0075')     # Fraction of precursors [—]
 lambda_1 = mp.mpf('0.001')      # Decay constant of precursors [1/s]
@@ -12,12 +12,12 @@ Lambda_1 = mp.mpf('0.0015')     # Prompt generation time [s]
 source   = mp.mpf('1.0e8')      # Source, q [n/s]
 rho_s    = mp.mpf('-6.0e-5')    # b factor in at+b, also ρ(0) [—]
 
-# -------------------- z(t, rho_0) --------------------
+# -------------------- z(t, rho_0), Eq. (48)--------------------
 def z(t, rho_0, beta, Lambda_1, gamma_1, lambda_1):
     a1 = mp.sqrt(gamma_1 / Lambda_1)
     return a1 * (mp.mpf(t) + (rho_0 - beta)/gamma_1 + Lambda_1*lambda_1/gamma_1)
 
-# -------------------- Integrals --------------------
+# -------------------- Integrals Table 3 --------------------
 def I_1(mu, zval):
     return mp.quad(lambda x: mp.power(x, mu) * mp.e**(-x**2/2 + x*zval), [0, mp.inf])
 
@@ -44,7 +44,7 @@ def I_6(t, rho_0, lambda_1, beta, gamma_1, Lambda_1):
     return mp.quad(lambda x: x*mp.power(x + lambda_1, mu) * mp.e**(-(a*x**2 - b*x)),\
                    [0, mp.inf])
 
-# -------------------- Prefactor F --------------------
+# -------------------- Prefactor F given in Table 2 --------------------
 def prefactor_F(lambda_1, beta, gamma_1, Lambda_1):
     mu = (lambda_1*beta)/gamma_1
     return (Lambda_1/gamma_1) * mp.power(lambda_1, -mu)
@@ -189,3 +189,4 @@ if __name__ == "__main__":
     for k in range(0, 21):
         Analytic_n(k, rho_s, beta, Lambda_1, gamma_1, lambda_1, n0, \
                    mp.mpf('0.0'), source)
+
