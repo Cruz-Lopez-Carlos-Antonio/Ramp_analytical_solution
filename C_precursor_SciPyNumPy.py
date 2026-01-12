@@ -14,6 +14,7 @@ def make_n_func(rho_s, beta, Lambda_1, gamma_1, lambda_1, n0, dn0, source):
 # --- C(t) vectorizing---
 def C_vector(ts, n_func, beta, Lambda_1, lambda_1, C0):
     ts = np.asarray(ts, dtype=float)
+    #Eq. (57)
     f = np.array([math.exp(lambda_1*tau) * n_func(tau) for tau in ts], dtype=float)
     F = cumulative_trapezoid(f, ts, initial=0.0)  # ∫_0^t e^{λ τ} n(τ) dτ
     return np.exp(-lambda_1*ts) * (C0 + (beta/Lambda_1)*F)
@@ -34,7 +35,7 @@ if __name__ == "__main__":
     n_func = make_n_func(rho_s, beta, Lambda_1, gamma_1, lambda_1, n0, dn0, source)
 
     # --- Mesh for the numerical integration ---
-    ts = np.linspace(0.0, 20.0, 2001)     # paso 0.1 s
+    ts = np.linspace(0.0, 20.0, 2001)     # step 0.1 s
 
     # --- Evaluation ---
     Cs = C_vector(ts, n_func, beta, Lambda_1, lambda_1, C0)
