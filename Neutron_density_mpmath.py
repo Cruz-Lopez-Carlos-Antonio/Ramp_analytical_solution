@@ -49,7 +49,7 @@ def prefactor_F(lambda_1, beta, gamma_1, Lambda_1):
     mu = (lambda_1*beta)/gamma_1
     return (Lambda_1/gamma_1) * mp.power(lambda_1, -mu)
 
-# ==================== Robust Solver 2x2 ====================
+# ==================== Robust Solver 2x2, Algorithm 4 ====================
 def _row_col_scale(A, b):
     #Algorithm 2
     A = mp.matrix(A)  
@@ -83,7 +83,7 @@ def _row_col_scale(A, b):
     #Step 9
     return A, b, undo_col_scale
 
-def _tikhonov(A, b, tau=mp.mpf('1e-28')):
+def _tikhonov(A, b, tau=mp.mpf('1e-28')):#Algorithm 3
     #Step 4 in Algorithm 3
     AT = A.T
     ATA = AT * A
@@ -135,7 +135,7 @@ def solve2x2_robust(A, b):
     xs = _tikhonov(As, bs, tau=mp.mpf('1e-28'))
     return undo(xs)
 
-# -------------------- Initial conditions --------------------
+# -------------------- Initial conditions, Eq. (50) --------------------
 def Constants_Ini_con(lambda_1, beta, Lambda_1, gamma_1, rho_0, \
                       n_0, dn_0, q):
     zeta = z(0, rho_0, beta, Lambda_1, gamma_1, lambda_1)
@@ -189,4 +189,5 @@ if __name__ == "__main__":
     for k in range(0, 21):
         Analytic_n(k, rho_s, beta, Lambda_1, gamma_1, lambda_1, n0, \
                    mp.mpf('0.0'), source)
+
 
