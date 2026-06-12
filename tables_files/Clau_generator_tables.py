@@ -7,7 +7,7 @@ mp.mp.dps = 80
 # Archivo de entrada y salida
 # ============================================================
 
-INPUT_FILE = "condicion_1.txt"
+INPUT_FILE = "output_1.txt"
 OUTPUT_FILE = "comparative_tables.txt"
 
 
@@ -112,10 +112,10 @@ def ape(reference, approx):
     return abs((approx - reference) / reference) * 100
 
 
-def fmt_ape(x):
+def fmt_ape(x, digits=3):
     if mp.isnan(x):
         return "nan"
-    return mp.nstr(x, 3)
+    return mp.nstr(x, digits)
 
 
 # ============================================================
@@ -131,6 +131,7 @@ def write_table(
     rk_digits,
     reference_digits,
     only_even=False,
+    ape_digits=3,
 ):
     f.write(title + "\n")
     f.write("-" * len(title) + "\n")
@@ -152,7 +153,7 @@ def write_table(
             f"{fmt_time(t):>4} "
             f"{fmt_number(rk, rk_digits):>42} "
             f"{fmt_number(ref, reference_digits):>42} "
-            f"{fmt_ape(error):>12}\n"
+            f"{fmt_ape(error, ape_digits):>12}\n"
         )
 
     f.write("\n\n")
@@ -179,6 +180,7 @@ def create_tables(input_file, output_file):
             rk_digits=32,
             reference_digits=16,
             only_even=False,
+            ape_digits=3,
         )
 
         write_table(
@@ -190,6 +192,7 @@ def create_tables(input_file, output_file):
             rk_digits=32,
             reference_digits=32,
             only_even=False,
+            ape_digits=4,
         )
 
         write_table(
@@ -201,6 +204,7 @@ def create_tables(input_file, output_file):
             rk_digits=32,
             reference_digits=16,
             only_even=False,
+            ape_digits=3,
         )
 
         # ====================================================
@@ -216,6 +220,7 @@ def create_tables(input_file, output_file):
             rk_digits=32,
             reference_digits=16,
             only_even=True,
+            ape_digits=3,
         )
 
         write_table(
@@ -227,6 +232,7 @@ def create_tables(input_file, output_file):
             rk_digits=32,
             reference_digits=32,
             only_even=True,
+            ape_digits=4,
         )
 
         write_table(
@@ -238,6 +244,7 @@ def create_tables(input_file, output_file):
             rk_digits=32,
             reference_digits=16,
             only_even=True,
+            ape_digits=3,
         )
 
 
