@@ -6,30 +6,30 @@ import numpy.linalg as npl
 from scipy.special import gamma, gammaincc  # Palma
 
 # ------------------------------------------------------------
-# Physical Parameters
+# Physical parameters (common to all methods)
 # ------------------------------------------------------------
-a       = 1.0e-4     # pendiente de la rampa, rho(t) = a t + b
-beta    = 0.0075     # fracción de retrasados
-lam     = 0.001      # lambda (decaimiento de precursores)
-Lambda1 = 0.0015     # tiempo de generación de neutrones
-q       = 1.0e8      # fuente externa
-b       = -6.0e-5    # término constante de la rampa
+a       = 1.0e-4     # ramp slope, rho(t) = a t + b
+beta    = 0.0075     # delayed neutron fraction
+lam     = 0.001      # precursor decay constant
+Lambda1 = 0.0015     # neutron generation time
+q       = 1.0e8      # external source
+b       = -6.0e-5    # constant term of the ramp
 
-# Condición inicial típica de arranque
+# Typical initial condition
 n0  = q * Lambda1 / abs(b)
 dn0 = 0.0
 
-# Notación interna para la solución analítica (Smets)
+# Internal notation for the analytical solution (Smets)
 gamma_1  = a
 lambda_1 = lam
 Lambda_1 = Lambda1
 rho_0    = b
 
-# Cuadratura para tus integrales (Sección 6 de tu artículo)
+# Quadrature settings for the analytical integrals
 _QKWARGS = dict(epsabs=0.0, epsrel=1e-9, limit=200)
 
 # ============================================================
-# 1) Solución analítica tipo Smets (tu Eq. (69))
+# 1) Smets-type analytical solution
 # ============================================================
 
 def z(t, rho_0, beta, Lambda_1, gamma_1, lambda_1):
@@ -132,7 +132,6 @@ def Analytic_n(t, rho_0, beta, Lambda_1, gamma_1, lambda_1, n_0, dn_0, q):
 # ============================================================
 # 2) Zhang
 # ============================================================
-
 def n_zhang(t, a, beta, Lambda1, q, b, n0):
     numerator   = beta * n0 + q * Lambda1
     denominator = beta - (a * t + b)
