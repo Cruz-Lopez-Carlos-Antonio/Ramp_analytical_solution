@@ -130,7 +130,7 @@ def Analytic_n(t, rho_0, beta, Lambda_1, gamma_1, lambda_1, n_0, dn_0, q):
     return float(first + second + third)
 
 # ============================================================
-# 2) Zhang
+# 2) Zhang et al. analytical approximation
 # ============================================================
 def n_zhang(t, a, beta, Lambda1, q, b, n0):
     numerator   = beta * n0 + q * Lambda1
