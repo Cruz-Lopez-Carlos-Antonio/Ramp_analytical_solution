@@ -29,7 +29,7 @@ rho_0    = b
 _QKWARGS = dict(epsabs=0.0, epsrel=1e-9, limit=200)
 
 # ============================================================
-# 1) Smets-type analytical solution
+# 1) MIM analytical solution
 # ============================================================
 
 def z(t, rho_0, beta, Lambda_1, gamma_1, lambda_1):
