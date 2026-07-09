@@ -6,7 +6,7 @@ import numpy.linalg as npl
 from scipy.special import gamma, gammaincc  # Palma
 
 # ------------------------------------------------------------
-# Parámetros físicos (comunes a todos los métodos)
+# Physical Parameters
 # ------------------------------------------------------------
 a       = 1.0e-4     # pendiente de la rampa, rho(t) = a t + b
 beta    = 0.0075     # fracción de retrasados
