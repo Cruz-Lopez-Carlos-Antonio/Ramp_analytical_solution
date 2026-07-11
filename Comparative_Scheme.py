@@ -171,7 +171,8 @@ def n_palma(t):
     return float(val)
     
 # ============================================================
-# 4) Runge–Kutta 4° orden (1 grupo de retardados, rampa)
+# 4) Fourth-order Runge–Kutta method
+#    (one delayed-neutron precursor group and ramp reactivity)
 # ============================================================
 
 def rho_t(t, a, b):
@@ -179,6 +180,8 @@ def rho_t(t, a, b):
 
 def rhs_point_kinetics(t, y, a, b, beta, lam, Lambda1, q):
     """
+    Right-hand side of the Neutron Point Kinetics Equations.
+
     y = [n, C]
     """
     n, C = y
@@ -196,20 +199,22 @@ def rk4_step(f, t, y, h, args):
 
 def rk4_solve_and_sample(times, a, b, beta, lam, Lambda1, q, n0):
     """
-    Integra una vez el sistema entre t=0 y t_max usando RK4
-    con paso fijo h, y luego devuelve n(t) en los tiempos 'times'.
+    Integrates the system once from t = 0 to t_max using the
+    fourth-order Runge–Kutta method with a fixed step size h,
+    and then returns n(t) at the requested sampling times.
     """
     times = np.asarray(times, dtype=float)
     t_max = float(times.max())
-    # Paso de integración: ajústalo para la precisión que quieras.
-    h = 1.0e-3  # por ejemplo, 0.001 s -> 20,000 pasos hasta t=20
+
+    # Integration step size; adjust it according to the desired accuracy.
+    h = 1.0e-3  # For example, 0.001 s gives 20,000 steps up to t = 20 s.
     N = int(round(t_max / h))
 
-    # Condiciones iniciales
+    # Initial conditions
     C0 = beta * n0 / (lam * Lambda1)
     y = np.array([n0, C0], dtype=float)
 
-    # Arrays para guardar la solución completa (solo para muestreo)
+    # Arrays used to store the complete solution for subsequent sampling
     n_full = np.empty(N+1, dtype=float)
     t_full = np.empty(N+1, dtype=float)
 
@@ -225,7 +230,7 @@ def rk4_solve_and_sample(times, a, b, beta, lam, Lambda1, q, n0):
         n_full[k] = y[0]
         t_full[k] = t
 
-    # Muestreamos n(t) en los tiempos requeridos (t son múltiplos de h)
+    # Sample n(t) at the requested times, assumed to be multiples of h.
     n_out = np.empty_like(times)
     inv_h = 1.0/h
     for i, tt in enumerate(times):
@@ -233,7 +238,6 @@ def rk4_solve_and_sample(times, a, b, beta, lam, Lambda1, q, n0):
         n_out[i] = n_full[idx]
 
     return n_out
-
 # ============================================================
 # Rutina genérica de benchmark con promedio (para métodos n(t))
 # ============================================================
