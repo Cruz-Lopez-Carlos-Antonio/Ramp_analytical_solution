@@ -150,7 +150,7 @@ ell = Lambda1
 k1 = (k * q0 + r) / r
 k2 = (beta - q0) / r      # = A3
 k3 = k * q * ell / r
-s  = 1.0 + k * beta / r   # exponent order in Palma's solution
+s  = 1.0 + k * beta / r   # Exponent appearing in Palma's analytical solution
 
 A3 = k2
 
