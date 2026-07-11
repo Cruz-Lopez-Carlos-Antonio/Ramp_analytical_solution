@@ -138,10 +138,10 @@ def n_zhang(t, a, beta, Lambda1, q, b, n0):
     return numerator / denominator
 
 # ============================================================
-# 3) Palma et al. (a partir de tu Corrected Palma.py)
+# 3) Palma et al. analytical approximation
 # ============================================================
 
-# Mapeo de notación:
+# Notation mapping:
 q0  = b
 r   = a
 k   = lam
@@ -150,17 +150,18 @@ ell = Lambda1
 k1 = (k * q0 + r) / r
 k2 = (beta - q0) / r      # = A3
 k3 = k * q * ell / r
-s  = 1.0 + k * beta / r   # orden del exponente en Palma
+s  = 1.0 + k * beta / r   # exponent order in Palma's solution
 
 A3 = k2
 
-def upper_incomplete_gamma(s_param, z):
+def upper_incomplete_gamma(s, z):
     # Γ(s, z) = Γ(s) * gammaincc(s, z)
-    return gamma(s_param) * gammaincc(s_param, z)
+    return gamma(s) * gammaincc(s, z)
 
 A2 = -upper_incomplete_gamma(s, k * A3) \
      + (r * n0 * (k * A3)**s) / (k * q * ell * np.exp(k * A3))
 
+# Global normalization constant determined from n(0) = n0
 B_palma = n0 * (A3 ** s) / (upper_incomplete_gamma(s, k * A3) + A2)
 
 def n_palma(t):
@@ -168,7 +169,7 @@ def n_palma(t):
     x = A3 - t
     val = B_palma * math.exp(-k * t) / (x**s) * (upper_incomplete_gamma(s, k * x) + A2)
     return float(val)
-
+    
 # ============================================================
 # 4) Runge–Kutta 4° orden (1 grupo de retardados, rampa)
 # ============================================================
