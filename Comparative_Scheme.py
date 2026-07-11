@@ -15,7 +15,7 @@ Lambda1 = 0.0015     # neutron generation time
 q       = 1.0e8      # external source
 b       = -6.0e-5    # constant term of the ramp
 
-# Typical initial condition
+# Initial conditions for Zhang et al. scenario
 n0  = q * Lambda1 / abs(b)
 dn0 = 0.0
 
