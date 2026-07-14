@@ -239,14 +239,17 @@ def rk4_solve_and_sample(times, a, b, beta, lam, Lambda1, q, n0):
 
     return n_out
 # ============================================================
-# Rutina genérica de benchmark con promedio (para métodos n(t))
+# Generic averaged benchmark routine for scalar n(t) methods
 # ============================================================
 
 def benchmark_method(method, times, args=(), n_runs=5, warmup=True):
     """
-    method(t, *args) escalar: se evalúa punto a punto.
+    Benchmarks a scalar method of the form method(t, *args),
+    evaluated independently at each requested time.
     """
     times = np.asarray(times, dtype=float)
+
+    # Optional warm-up run, excluded from the timing measurements
     if warmup:
         _ = [method(t, *args) for t in times]
 
@@ -261,14 +264,18 @@ def benchmark_method(method, times, args=(), n_runs=5, warmup=True):
     mean_elapsed = elapsed_array.mean()
     std_elapsed  = elapsed_array.std(ddof=1) if n_runs > 1 else 0.0
     time_per_eval = mean_elapsed / len(times)
+
     return mean_elapsed, std_elapsed, time_per_eval
+
 
 def benchmark_rk4(times, a, b, beta, lam, Lambda1, q, n0, n_runs=5, warmup=True):
     """
-    Benchmark específico para RK4: integra una vez todo el intervalo
-    y muestrea en 'times'.
+    RK4-specific benchmark: integrates the complete time interval once
+    and samples the solution at the requested times.
     """
     times = np.asarray(times, dtype=float)
+
+    # Optional warm-up integration, excluded from the timing measurements
     if warmup:
         _ = rk4_solve_and_sample(times, a, b, beta, lam, Lambda1, q, n0)
 
@@ -282,7 +289,10 @@ def benchmark_rk4(times, a, b, beta, lam, Lambda1, q, n0, n_runs=5, warmup=True)
     elapsed_array = np.array(elapsed_list)
     mean_elapsed = elapsed_array.mean()
     std_elapsed  = elapsed_array.std(ddof=1) if n_runs > 1 else 0.0
+
+    # Average total integration time divided by the number of sampled points
     time_per_eval = mean_elapsed / len(times)
+
     return mean_elapsed, std_elapsed, time_per_eval
 
 # ============================================================
