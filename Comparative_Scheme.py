@@ -19,7 +19,7 @@ b       = -6.0e-5    # constant term of the ramp
 n0  = q * Lambda1 / abs(b)
 dn0 = 0.0
 
-# Internal notation for the analytical solution (Smets)
+# Internal notation for the analytical solution (Proposed solution)
 gamma_1  = a
 lambda_1 = lam
 Lambda_1 = Lambda1
@@ -82,50 +82,79 @@ def prefactor_F(lambda_1, beta, gamma_1, Lambda_1):
     mu = lambda_1*beta/gamma_1
     return (Lambda_1/gamma_1) * (lambda_1**(-mu))
 
-def Constants_Ini_con(lambda_1, beta, Lambda_1, gamma_1, rho_0, n_0, dn_0, q):
-    zeta = z(0.0, rho_0, beta, Lambda_1, gamma_1, lambda_1)
-    mu   = lambda_1*beta/gamma_1
+def prepare_analytic_solution(lambda_1, beta, Lambda_1, gamma_1, rho_0, n_0, dn_0, q):
+    """
+    Computes all time-independent quantities required by the MIM
+    analytical solution. This preprocessing stage is performed once
+    before evaluating n(t) over the requested time grid.
+    """
+    mu = lambda_1 * beta / gamma_1
+    F = prefactor_F(lambda_1, beta, gamma_1, Lambda_1)
 
-    Int1 = I_1(mu, zeta)
-    Int2 = I_2(mu, zeta)
-    Int3 = I_3(mu, zeta)
-    Int4 = I_4(mu, zeta)
+    # Auxiliary variable and analytical integrals evaluated at t = 0
+    zeta_0 = z(0.0, rho_0, beta, Lambda_1, gamma_1, lambda_1)
+    Int1 = I_1(mu, zeta_0)
+    Int2 = I_2(mu, zeta_0)
+    Int3 = I_3(mu, zeta_0)
+    Int4 = I_4(mu, zeta_0)
     Int5 = I_5(0.0, rho_0, lambda_1, beta, gamma_1, Lambda_1)
     Int6 = I_6(0.0, rho_0, lambda_1, beta, gamma_1, Lambda_1)
 
-    F = prefactor_F(lambda_1, beta, gamma_1, Lambda_1)
-
+    # Linear system for the integration constants A1 and A2
+    sqrt_factor = math.sqrt(gamma_1 / Lambda_1)
     l1 = np.array([
-        [Int1,                                  Int2],
-        [math.sqrt(gamma_1/Lambda_1)*Int3, -math.sqrt(gamma_1/Lambda_1)*Int4]
+        [Int1,                    Int2],
+        [sqrt_factor * Int3, -sqrt_factor * Int4]
     ], dtype=float)
 
     rhs1 = n_0 - q * F * Int5
     rhs2 = dn_0 + lambda_1 * (n_0 - q * F * Int5) - q * F * Int6
-
     l2 = np.array([rhs1, rhs2], dtype=float)
 
+    # Column-wise normalization of the coefficient matrix
     col_norms = npl.norm(l1, axis=0)
+    if np.any(col_norms == 0.0):
+        raise np.linalg.LinAlgError(
+            "At least one column of the initial-condition matrix has zero norm."
+        )
     l1_scaled = l1 / col_norms
 
+    # Normalization of the right-hand side
     max_rhs = np.max(np.abs(l2))
     if max_rhs == 0.0:
         max_rhs = 1.0
     l2_scaled = l2 / max_rhs
 
+    # Least-squares solution of the normalized system
     A_scaled, *_ = npl.lstsq(l1_scaled, l2_scaled, rcond=None)
+
+    # Back-scaling of the integration constants
     A1, A2 = (A_scaled / col_norms) * max_rhs
-    return float(A1), float(A2)
 
-def Analytic_n(t, rho_0, beta, Lambda_1, gamma_1, lambda_1, n_0, dn_0, q):
-    A1, A2 = Constants_Ini_con(lambda_1, beta, Lambda_1, gamma_1, rho_0, n_0, dn_0, q)
-    mu   = lambda_1*beta/gamma_1
+    return {
+        "A1": float(A1),
+        "A2": float(A2),
+        "mu": float(mu),
+        "F": float(F),
+    }
+
+
+def Analytic_n(t, rho_0, beta, Lambda_1, gamma_1, lambda_1, q, precomputed):
+    """
+    Evaluates the optimized MIM analytical solution using quantities
+    previously computed by prepare_analytic_solution().
+    """
+    A1 = precomputed["A1"]
+    A2 = precomputed["A2"]
+    mu = precomputed["mu"]
+    F = precomputed["F"]
+
     zeta = z(t, rho_0, beta, Lambda_1, gamma_1, lambda_1)
-    F    = prefactor_F(lambda_1, beta, gamma_1, Lambda_1)
+    decay_factor = math.exp(-lambda_1 * t)
 
-    first  = A1 * math.exp(-lambda_1 * t) * I_1(mu, zeta)
-    second = A2 * math.exp(-lambda_1 * t) * I_2(mu, zeta)
-    third  = q  * F * I_5(t, rho_0, lambda_1, beta, gamma_1, Lambda_1)
+    first = A1 * decay_factor * I_1(mu, zeta)
+    second = A2 * decay_factor * I_2(mu, zeta)
+    third = q * F * I_5(t, rho_0, lambda_1, beta, gamma_1, Lambda_1)
 
     return float(first + second + third)
 
@@ -296,76 +325,130 @@ def benchmark_rk4(times, a, b, beta, lam, Lambda1, q, n0, n_runs=5, warmup=True)
     return mean_elapsed, std_elapsed, time_per_eval
 
 # ============================================================
-# Programa principal: comparación en t = 0,1,...,20
+# Main program: comparison at t = 0, 1, ..., 20
 # ============================================================
 
 if __name__ == "__main__":
 
     times = np.arange(0, 21, 1, dtype=float)
 
-    analytic_args = (rho_0, beta, Lambda_1, gamma_1, lambda_1, n0, dn0, q)
-    zhang_args    = (a, beta, Lambda1, q, b, n0)
+    # Compute the time-independent MIM quantities only once.
+    proposed_precomputed = prepare_analytic_solution(
+        lambda_1,
+        beta,
+        Lambda_1,
+        gamma_1,
+        rho_0,
+        n0,
+        dn0,
+        q,
+    )
+
+    analytic_args = (
+        rho_0,
+        beta,
+        Lambda_1,
+        gamma_1,
+        lambda_1,
+        q,
+        proposed_precomputed,
+    )
+    zhang_args = (a, beta, Lambda1, q, b, n0)
 
     n_runs = 5
 
-    print("=== Benchmark en t = 0,1,2,...,20 ===")
-    print(f"Parámetros: a={a}, beta={beta}, lambda={lam}, Lambda={Lambda1}, q={q}, b={b}")
-    print(f"n0 inicial = {n0:.6e}")
+    print("=== Benchmark at t = 0, 1, 2, ..., 20 ===")
+    print(
+        f"Parameters: a={a}, beta={beta}, lambda={lam}, "
+        f"Lambda={Lambda1}, q={q}, b={b}"
+    )
+    print(f"Initial n0 = {n0:.6e}")
     print()
 
-    # --- Smets (tu método analítico) ---
+    # --- Proposed solution ---
     mean_A, std_A, per_eval_A = benchmark_method(
         Analytic_n,
         times,
         args=analytic_args,
         n_runs=n_runs,
-        warmup=True
+        warmup=True,
     )
-    print("Solución analítica (Eq. (69), método de Smets):")
-    print(f"  Tiempo medio total: {mean_A:.6f} s ± {std_A:.6f} s")
-    print(f"  Tiempo medio por evaluación: {per_eval_A:.6e} s\n")
+    print("Analytical solution (Eq. (69), Proposed solution):")
+    print(f"  Mean total time: {mean_A:.6f} s ± {std_A:.6f} s")
+    print(f"  Mean time per evaluation: {per_eval_A:.6e} s\n")
 
-    # --- Zhang ---
+    # --- Zhang et al. approximation ---
     mean_Z, std_Z, per_eval_Z = benchmark_method(
         n_zhang,
         times,
         args=zhang_args,
         n_runs=n_runs,
-        warmup=True
+        warmup=True,
     )
-    print("Solución aproximada de Zhang et al.:")
-    print(f"  Tiempo medio total: {mean_Z:.6f} s ± {std_Z:.6f} s")
-    print(f"  Tiempo medio por evaluación: {per_eval_Z:.6e} s\n")
+    print("Zhang et al. approximate solution:")
+    print(f"  Mean total time: {mean_Z:.6f} s ± {std_Z:.6f} s")
+    print(f"  Mean time per evaluation: {per_eval_Z:.6e} s\n")
 
-    # --- Palma ---
+    # --- Palma et al. analytical approximation ---
     mean_P, std_P, per_eval_P = benchmark_method(
         n_palma,
         times,
         args=(),
         n_runs=n_runs,
-        warmup=True
+        warmup=True,
     )
-    print("Solución analítica de Palma et al.:")
-    print(f"  Tiempo medio total: {mean_P:.6f} s ± {std_P:.6f} s")
-    print(f"  Tiempo medio por evaluación: {per_eval_P:.6e} s\n")
+    print("Palma et al. analytical solution:")
+    print(f"  Mean total time: {mean_P:.6f} s ± {std_P:.6f} s")
+    print(f"  Mean time per evaluation: {per_eval_P:.6e} s\n")
 
-    # --- RK4 ---
+    # --- Fourth-order Runge-Kutta method ---
     mean_R, std_R, per_eval_R = benchmark_rk4(
         times,
-        a, b, beta, lam, Lambda1, q, n0,
+        a,
+        b,
+        beta,
+        lam,
+        Lambda1,
+        q,
+        n0,
         n_runs=n_runs,
-        warmup=True
+        warmup=True,
     )
-    print("Solución numérica Runge–Kutta 4° orden:")
-    print(f"  Tiempo medio total: {mean_R:.6f} s ± {std_R:.6f} s")
-    print(f"  Tiempo medio por evaluación (sobre estos 21 puntos): {per_eval_R:.6e} s\n")
+    print("Fourth-order Runge-Kutta numerical solution:")
+    print(f"  Mean total time: {mean_R:.6f} s ± {std_R:.6f} s")
+    print(
+        "  Mean time per evaluation (over these 21 sampled points): "
+        f"{per_eval_R:.6e} s\n"
+    )
 
-    # (Opcional) Mostrar algunos valores comparados
-    print("Comparación de n(t) en t = 0, 5, 10, 15, 20:")
-    nA_list = [Analytic_n(t, *analytic_args) for t in [0,5,10,15,20]]
-    nZ_list = [n_zhang(t, *zhang_args)       for t in [0,5,10,15,20]]
-    nP_list = [n_palma(t)                    for t in [0,5,10,15,20]]
-    nR_full = rk4_solve_and_sample([0,5,10,15,20], a, b, beta, lam, Lambda1, q, n0)
+    # Optional comparison at selected times
+    sample_times = [0, 5, 10, 15, 20, 30, 40, 60, 62, 64, 66, 68, 70, 75, 80]
+    print("Comparison of n(t) at t = 0, 5, 10, 15, 20, 30, 40, 60, 62, 64, 66, 68, 70, 75, 80 :")
 
-    for t, nA, nZ, nP, nR in zip([0,5,10,15,20], nA_list, nZ_list, nP_list, nR_full):
-        print(f"  t = {t:4.1f} s -> Smets = {nA:.6e}, Zhang = {nZ:.6e}, Palma = {nP:.6e}, RK4 = {nR:.6e}")
+    nA_list = [Analytic_n(t, *analytic_args) for t in sample_times]
+    nZ_list = [n_zhang(t, *zhang_args) for t in sample_times]
+    nP_list = [n_palma(t) for t in sample_times]
+    nR_full = rk4_solve_and_sample(
+        sample_times, a, b, beta, lam, Lambda1, q, n0
+    )
+
+    for t, nA, nZ, nP, nR in zip(
+        sample_times, nA_list, nZ_list, nP_list, nR_full
+    ):
+        # 1. Imprime la salida original que ya tenías
+        print(
+            f"  t = {t:4.1f} s -> Proposed solution = {nA:.6e}, "
+            f"Zhang = {nZ:.6e}, Palma = {nP:.6e}, RK4 = {nR:.6e}"
+        )
+        
+        # 2. Calcula el APE para cada método (protegiendo contra división por cero)
+        ape_A = abs((nA - nR) / nR) * 100.0 if nR != 0 else 0.0
+        ape_Z = abs((nZ - nR) / nR) * 100.0 if nR != 0 else 0.0
+        ape_P = abs((nP - nR) / nR) * 100.0 if nR != 0 else 0.0
+        
+        # 3. Imprime el APE en una nueva línea indentada
+        print(
+            f"               -> APE (%): Proposed solution = {ape_A:.3f}%, "
+            f"Zhang = {ape_Z:.3f}%, Palma = {ape_P:.3f}%\n"
+        )
+
