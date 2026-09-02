@@ -4,7 +4,7 @@ import numpy as np
 from scipy.integrate import quad
 import numpy.linalg as npl
 
-# --- Input parameters (Section 5.2, Table 2) --- Based on Zhang et al. (2008, p. 748) and Palma et al. (2009, p. 1471).
+# --- Input parameters (Section 6.2.1, Table 4) --- Based on Zhang et al. (2008, p. 748) and Palma et al. (2009, p. 1471).
 
 gamma_1  = 0.0001    # Slope ramp, gamma [1/s]  
 beta     = 0.0075    # Fraction of precursors [—] 
