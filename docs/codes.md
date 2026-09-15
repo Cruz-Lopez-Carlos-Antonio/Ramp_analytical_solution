@@ -6,8 +6,7 @@ math: true
 
 ## Overview of the Python Scripts
 
-The repository contains seven main Python 3 scripts, which implement the analytical solution for $n(t)$ and the associated delayed neutron precursor concentration $C(t)$, both developed with the Modified Integration Method proposed in the submited paper. A RK4 reference solution, as well as the computational implementation of the Zhang et al. (2008) and the Palma et al. (2010) solutions. 
-Table A contains the notation used.
+The repository contains the Python 3 scripts related to the article, which implement the analytical solution for $n(t)$ and the associated delayed neutron precursor concentration $C(t)$, both developed with the Modified Integration Method proposed in the submited paper. Aditionally, a RK4 reference solution is included, as well as the computational implementation of the Zhang et al. (2008) and the Palma et al. (2010) solutions. Table A contains the notation used.
 
 **Table A:** Integral definitions and notation in the implementation.
 
@@ -19,10 +18,23 @@ Table A contains the notation used.
 | $\bar{I}_4(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu+1} e^{-y^2/2-zy}\,dy$ | `I_4` |
 | $I_5(t),\, I_6(t)$ | $P_{0,1}$ | `I_5, I_6` |
 
+where $\mu=\lambda \beta/a$ and
+
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0; overflow-x: auto;">
+
+z(t) \;=\;\sqrt{\frac{a}{\Lambda}}\,t+\frac{\rho_0-\beta}{\sqrt{a\Lambda}}+\lambda\sqrt{\frac{\Lambda}{a}},
+</div>
+
+and:
+
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0; overflow-x: auto;">
+$P_k(t)=\displaystyle \int_{0}^{\infty} s^{k}\,
+e^{-\frac{1}{a}\!\left(\frac{\Lambda}{2}s^{2}+(\beta-b-a t)\,s\right)}
+\, (s+\lambda)^{\mu}\,ds,\quad k\in\{0,1\}$
+</div>
+
 ---
 
-
----
 
 ### 1. Neutron density $n(t)$, using SciPyNumPy (16 digit precision)
 <div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
