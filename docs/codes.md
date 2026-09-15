@@ -19,10 +19,57 @@ They implement the analytical solution for $n(t)$ and the associated delayed neu
   </a>
 </div>
 
-This script implements the analytical solution of the neutron density $n(t)$ using **SciPy** and **NumPy**.  
-The core of the implementation is based on the integral representation shown in the *Equations* page, where the involved integrals are evaluated using `scipy.integrate.quad`.
+This script implements the analytical solution of the neutron density $n(t)$ given by
 
-The script also contains a linear system, derived from the initial conditions $n(0)$ and $\dot n(0)$, to determine the constants $K_1$ and $K_2$ via a least-squares procedure (`numpy.linalg.lstsq`), including column-wise normalization for numerical stability.
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0; overflow-x: auto;">
+$$
+n(t)=A_1 e^{-\lambda t} \bar{I}_1\big(\mu,z(t)\big)
++ A_2 e^{-\lambda t} \bar{I}_2\big(\mu,z(t)\big)
++ qF\,I_5(t)
+$$
+</div>
+
+using **SciPy** and **NumPy**, where the involved integrals are evaluated using `scipy.integrate.quad`.
+The script also contains a linear system, derived from the initial conditions $n(0)$ and $\dot n(0)$, given by:
+
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0; overflow-x: auto;">
+$$
+\underbrace{\begin{bmatrix}
+\bar{I}_1(\mu,z(0)) & \bar{I}_2(\mu,z(0))\\[3pt]
+\sqrt{\dfrac{a}{\Lambda}}\,\bar{I}_3(\mu,z(0)) &
+-\sqrt{\dfrac{a}{\Lambda}}\,\bar{I}_4(\mu,z(0))
+\end{bmatrix}}_{=:\mathbf{L}_1}
+\begin{bmatrix} A_1\\ A_2 \end{bmatrix}
+=
+\underbrace{\begin{bmatrix}
+n_0 - q\,F\,I_5(0)\\[3pt]
+\dot n_0 + \lambda\big(n_0 - q\,F\,I_5(0)\big) - q\,F\,I_6(0)
+\end{bmatrix}}_{=:\mathbf{L}_2}
+$$
+</div>
+
+i.e.,
+
+<div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0; overflow-x: auto;">
+$$
+\mathbf{L}_1
+\begin{bmatrix}A_1 \\ A_2\end{bmatrix}
+=
+\mathbf{L}_2
+$$
+</div>
+
+to determine the constants $K_1$ and $K_2$ via a least-squares procedure (`numpy.linalg.lstsq`), including column-wise normalization for numerical stability, and where the terms appearing are defined in the following Table:
+
+**Table 3:** Integral definitions and notation in the implementation. See also the notation given in Table 2.
+
+| Integral | Definition | Notation in codes |
+| :---: | :---: | :---: |
+| $\bar{I}_1(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu} e^{-y^2/2+zy}\,dy$ | `I_1` |
+| $\bar{I}_2(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu} e^{-y^2/2-zy}\,dy$ | `I_2` |
+| $\bar{I}_3(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu+1} e^{-y^2/2+zy}\,dy$ | `I_3` |
+| $\bar{I}_4(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu+1} e^{-y^2/2-zy}\,dy$ | `I_4` |
+| $I_5(t),\, I_6(t)$ | $P_{0,1}$ | `I_5, I_6` |
 
 ---
 
