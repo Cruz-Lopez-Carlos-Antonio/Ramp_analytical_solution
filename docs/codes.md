@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Python Codes
+math: true
 ---
 
 ## Overview of the Python Scripts
@@ -10,7 +11,7 @@ They implement the analytical solution for $n(t)$ and the associated delayed neu
 
 ---
 
-### 1. `Neutron_density_SciPyNumPy.py`
+### 1. Neutron density $n(t)$, using SciPyNumPy (16 digit precision)
 <div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
   <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/Neutron_density_SciPyNumPy.py" 
      target="_blank" style="font-size:16px; color:#22577a; font-weight:bold;">
@@ -25,8 +26,14 @@ The script also contains a linear system, derived from the initial conditions $n
 
 ---
 
-### 2. `Neutron_density_mpmath.py`
-[Link to access to the code](https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/Neutron_density_mpmath.py)
+### 2. Neutron density $n(t)$, using mpmath (arbitrary precision)
+<div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
+  <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/Neutron_density_mpmath.py" 
+     target="_blank" style="font-size:16px; color:#22577a; font-weight:bold;">
+     👉 Click here to view the code in a new tab
+  </a>
+</div>
+
 This script provides a **high-precision** version of the analytical solution for $n(t)$, implemented with **mpmath**.  
 It includes:
 
@@ -38,7 +45,13 @@ This implementation is used as a benchmark to assess conditioning effects and to
 
 ---
 
-### 3. `C_precursor_SciPyNumPy.py`
+### 3. Delayed Precursors Density, $C(t)$, using SciPyNumPy
+<div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
+  <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/C_precursor_SciPyNumPy.py" 
+     target="_blank" style="font-size:16px; color:#22577a; font-weight:bold;">
+     👉 Click here to view the code in a new tab
+  </a>
+</div>
 
 This script computes the delayed neutron precursor concentration $C(t)$ using the convolution formula
 
@@ -54,7 +67,13 @@ The function $n(t)$ is imported from `Neutron_density_SciPyNumPy.py`, and the sc
 
 ---
 
-### 4. `RK4_reference_mpmath.py`
+### 4. Runge-Kutta, reference solver, using mpmath
+<div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
+  <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/Runge-Kutta%204.py" 
+     target="_blank" style="font-size:16px; color:#22577a; font-weight:bold;">
+     👉 Click here to view the code in a new tab
+  </a>
+</div>
 
 This script implements a **fourth–order Runge–Kutta (RK4)** solver in 32-digit precision (via mpmath) for the NPKE system.  
 
