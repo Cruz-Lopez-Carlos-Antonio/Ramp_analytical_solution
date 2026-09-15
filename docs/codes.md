@@ -84,7 +84,35 @@ $$
 $$
 </div>
 
-to determine the constants $K_1$ and $K_2$ via a least-squares procedure (`numpy.linalg.lstsq`), including column-wise normalization for numerical stability, and where the terms appearing are defined in the following Table:
+to determine the constants $A_1$ and $A_2$ via a least-squares procedure (`numpy.linalg.lstsq`), including column-wise normalization for numerical stability.
+**Inputs & Numerical Parameters:**  
+The script receives physical, temporal, and numerical control parameters. Specifically, the integration tolerances and the maximum number of subintervals are explicitly defined to guarantee the stability of the adaptive quadrature routine used by `scipy.integrate.quad`. 
+*   `epsabs = 0.0`: Forces the algorithm to rely exclusively on relative error control.
+*   `epsrel = 1e-9`: Ensures the estimated relative error in each numerical quadrature is kept below $10^{-9}$.
+
+<div style="background:#f4f4f4; border:1px solid #ddd; border-left:4px solid #4a90e2; border-radius:4px; padding:10px; margin-bottom:15px; overflow-x:auto;">
+<pre style="margin: 0; background: transparent; border: none; font-family: monospace; color: #333;">
+# Physical parameters
+gamma_1  = 0.0001    # Slope ramp, a [1/s]  
+beta     = 0.0075    # Fraction of precursors [—] 
+lambda_1 = 0.001     # Decay constant of precursors [1/s]  
+Lambda_1 = 0.0015    # Prompt generation time [s]  
+source   = 10**8     # External source intensity, q [n/s]  
+rho_s    = -6e-5     # Initial reactivity b = rho(0) [—]  
+
+# Stability and Control epsabs/epsrel
+_QKWARGS = dict(epsabs=0.0, epsrel=1e-9, limit=200)
+
+# Evaluation time grid
+times = range(0, 21)
+</pre>
+</div>
+
+**Outputs:**  
+The script computes the neutron density $n(t)$ sequentially over the prescribed discrete time grid. These values are printed directly to the standard output and can be easily redirected to a text file for further plotting or analysis.
+
+**Computational Note on Optimization:**  
+While this implementation is mathematically accurate and functionally robust, it is **not** computationally optimized. Inside the main `Analytic_n` function, the routine `Constants_Ini_con` is invoked on every single time evaluation. Because the integration constants $A_1$ and $A_2$ depend solely on the initial conditions at $t=0$, recalculating them, normalizing the matrix, and solving the least-squares system at every time step introduces redundant computational overhead. An optimized version would precompute these constants once outside the time loop.
 
 
 ### 2. Neutron density $n(t)$, using mpmath (arbitrary precision)
