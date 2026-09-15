@@ -6,8 +6,21 @@ math: true
 
 ## Overview of the Python Scripts
 
-The repository contains seven main Python 3 scripts.  
-They implement the analytical solution for $n(t)$ and the associated delayed neutron precursor concentration $C(t)$, both developed with the Modified Integration Method proposed in the submited paper. A RK4 reference solution, as well as the computational implementation of the Zhang et al. (2008) and the Palma et al. (2010) solutions. 
+The repository contains seven main Python 3 scripts, which implement the analytical solution for $n(t)$ and the associated delayed neutron precursor concentration $C(t)$, both developed with the Modified Integration Method proposed in the submited paper. A RK4 reference solution, as well as the computational implementation of the Zhang et al. (2008) and the Palma et al. (2010) solutions. 
+Table A contains the notation used.
+
+**Table A:** Integral definitions and notation in the implementation.
+
+| Integral | Definition | Notation in codes |
+| :---: | :---: | :---: |
+| $\bar{I}_1(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu} e^{-y^2/2+zy}\,dy$ | `I_1` |
+| $\bar{I}_2(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu} e^{-y^2/2-zy}\,dy$ | `I_2` |
+| $\bar{I}_3(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu+1} e^{-y^2/2+zy}\,dy$ | `I_3` |
+| $\bar{I}_4(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu+1} e^{-y^2/2-zy}\,dy$ | `I_4` |
+| $I_5(t),\, I_6(t)$ | $P_{0,1}$ | `I_5, I_6` |
+
+---
+
 
 ---
 
@@ -19,17 +32,17 @@ They implement the analytical solution for $n(t)$ and the associated delayed neu
   </a>
 </div>
 
-This script implements the analytical solution of the neutron density $n(t)$ given by
+This script implements the analytical solution of the neutron density $n(t)$ written in the following form:
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0; overflow-x: auto;">
 $$
 n(t)=A_1 e^{-\lambda t} \bar{I}_1\big(\mu,z(t)\big)
 + A_2 e^{-\lambda t} \bar{I}_2\big(\mu,z(t)\big)
-+ qF\,I_5(t)
++ qF\,I_5(t),
 $$
 </div>
 
-using **SciPy** and **NumPy**, where the involved integrals are evaluated using `scipy.integrate.quad`.
+using **SciPy** and **NumPy**. The involved integrals are evaluated using `scipy.integrate.quad`.
 The script also contains a linear system, derived from the initial conditions $n(0)$ and $\dot n(0)$, given by:
 
 <div style="background:#f7f7f7; padding:15px; border-left:4px solid #4a90e2; border-radius:6px; margin:20px 0; overflow-x: auto;">
@@ -61,17 +74,6 @@ $$
 
 to determine the constants $K_1$ and $K_2$ via a least-squares procedure (`numpy.linalg.lstsq`), including column-wise normalization for numerical stability, and where the terms appearing are defined in the following Table:
 
-**Table 3:** Integral definitions and notation in the implementation. See also the notation given in Table 2.
-
-| Integral | Definition | Notation in codes |
-| :---: | :---: | :---: |
-| $\bar{I}_1(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu} e^{-y^2/2+zy}\,dy$ | `I_1` |
-| $\bar{I}_2(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu} e^{-y^2/2-zy}\,dy$ | `I_2` |
-| $\bar{I}_3(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu+1} e^{-y^2/2+zy}\,dy$ | `I_3` |
-| $\bar{I}_4(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu+1} e^{-y^2/2-zy}\,dy$ | `I_4` |
-| $I_5(t),\, I_6(t)$ | $P_{0,1}$ | `I_5, I_6` |
-
----
 
 ### 2. Neutron density $n(t)$, using mpmath (arbitrary precision)
 <div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
