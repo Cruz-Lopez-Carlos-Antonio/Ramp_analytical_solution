@@ -9,6 +9,35 @@
     <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
     {%- endif -%}
 
+    <!-- Estilos agregados para transformar los enlaces en botones -->
+    <style>
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 15px;
+        margin-bottom: 20px;
+      }
+      nav a.nav-btn {
+        background-color: #4a90e2; /* Azul acorde a tu index */
+        color: #ffffff;
+        text-decoration: none;
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: bold;
+        font-family: sans-serif;
+        font-size: 15px;
+        transition: background-color 0.3s ease, transform 0.1s ease;
+        border: 1px solid #357abd;
+      }
+      nav a.nav-btn:hover {
+        background-color: #357abd;
+        transform: translateY(-2px);
+        color: #ffffff;
+        text-decoration: none;
+      }
+    </style>
+
     {%- if page.math -%}
     <script>
       window.MathJax = {
@@ -32,12 +61,14 @@
         <header>
           <h1>{{ site.title }}</h1>
           <p>{{ site.description }}</p>
+          
+          <!-- Panel de navegación modificado -->
           <nav>
-            <a href="{{ "/index.html" | relative_url }}">Home</a> |
-            <a href="{{ "/equations.html" | relative_url }}">Equations</a> |
-            <a href="{{ "/codes.html" | relative_url }}">Codes</a> |
-            <a href="{{ "/validation.html" | relative_url }}">Validation</a> |
-            <a href="{{ "/about.html" | relative_url }}">About</a>
+            <a class="nav-btn" href="{{ "/index.html" | relative_url }}">Home</a>
+            <a class="nav-btn" href="{{ "/equations.html" | relative_url }}">Equations</a>
+            <a class="nav-btn" href="{{ "/codes.html" | relative_url }}">Codes</a>
+            <a class="nav-btn" href="{{ "/validation.html" | relative_url }}">Validation</a>
+            <a class="nav-btn" href="{{ "/about.html" | relative_url }}">About</a>
           </nav>
           <hr>
         </header>
