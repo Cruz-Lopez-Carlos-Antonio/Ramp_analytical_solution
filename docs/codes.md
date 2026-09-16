@@ -36,7 +36,7 @@ e^{-\frac{1}{a}\!\left(\frac{\Lambda}{2}s^{2}+(\beta-b-a t)\,s\right)}
 ---
 
 
-# 1. Neutron density $n(t)$, using SciPyNumPy (16 digit precision)
+## 1. Neutron density $n(t)$, using SciPyNumPy (16 digit precision)
 <div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
   <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/Neutron_density_SciPyNumPy.py" 
      target="_blank" style="font-size:16px; color:#22577a; font-weight:bold;">
@@ -117,7 +117,7 @@ While this implementation is mathematically accurate and functionally robust, it
 
 ---
 
-# 2. Neutron density $n(t)$, using mpmath (arbitrary precision)
+## 2. Neutron density $n(t)$, using mpmath (arbitrary precision)
 <div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
   <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/Neutron_density_mpmath.py" 
      target="_blank" style="font-size:16px; color:#22577a; font-weight:bold;">
@@ -136,7 +136,7 @@ This implementation is used as a benchmark to assess conditioning effects and to
 
 ---
 
-# 3. Delayed Precursors Density, $C(t)$, using SciPyNumPy
+## 3. Delayed Precursors Density, $C(t)$, using SciPyNumPy
 <div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
   <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/C_precursor_SciPyNumPy.py" 
      target="_blank" style="font-size:16px; color:#22577a; font-weight:bold;">
