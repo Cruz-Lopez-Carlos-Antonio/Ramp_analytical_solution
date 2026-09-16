@@ -6,7 +6,7 @@ math: true
 
 ## Overview of the Python Scripts
 
-The repository contains the Python 3 scripts developed in the article, which implement the analytical solution for $n(t)$ and the associated delayed neutron precursor concentration $C(t)$, both developed with the Modified Integration Method proposed in the submited paper. Aditionally, a RK4 reference solution is included, as well as the computational implementation of the Zhang et al. (2008) and the Palma et al. (2010) solutions. Table A contains the notation used.
+The repository contains the Python 3 scripts developed for the article, which implement the analytical solution for $n(t)$ and the associated delayed neutron precursor concentration $C(t)$, both developed using the Modified Integration Method proposed in the submited paper. Aditionally, a Runge-Kutta of four order, RK4, used as reference solution is included, as well as the computational implementation of the Zhang et al. (2008) and the Palma et al. (2010) solutions. Table A contains the notation used.
 
 **Table A:** Integral definitions and notation in the implementation.
 
@@ -170,3 +170,10 @@ This script implements a **fourth–order Runge–Kutta (RK4)** solver in 32-dig
 It solves simultaneously for $n(t)$ and $C(t)$ using a fine time step, and the resulting numerical solution is used as a high-accuracy reference to validate the analytical formulations and their numerical implementation.
 
 Parameters, time step, and integration interval can be adjusted to reproduce the tables and figures reported in the manuscript.
+
+---
+
+## References
+
+1. Zhang, F., Chen, W.-Z., & Gui, X.-W. (2008). Analytic method study of point-reactor kinetic equation when cold start-up. *Annals of Nuclear Energy, 35*(4), 746–749.
+2. Palma, D. A., Martinez, A. S., & Gonçalves, A. C. (2009). Analytical solution of point kinetics equations for linear reactivity variation during the start-up of a nuclear reactor. *Annals of Nuclear Energy, 36*(9), 1469–1471.
