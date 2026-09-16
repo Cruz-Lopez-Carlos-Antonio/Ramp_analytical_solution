@@ -16,7 +16,7 @@ The repository contains the Python 3 scripts developed for the article, which im
 | $\bar{I}_2(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu} e^{-y^2/2-zy}\,dy$ | `I_2` |
 | $\bar{I}_3(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu+1} e^{-y^2/2+zy}\,dy$ | `I_3` |
 | $\bar{I}_4(\mu,z)$ | $\displaystyle \int_{0}^{\infty} y^{\mu+1} e^{-y^2/2-zy}\,dy$ | `I_4` |
-| $I_5(t),\, I_6(t)$ | $P_{0,1}$ | `I_5, I_6` |
+| $I_5(t),\, I_6(t)$ | $P_{0,1}(t)$ | `I_5, I_6` |
 
 where $\mu=\lambda \beta/a$ and
 
@@ -36,7 +36,7 @@ e^{-\frac{1}{a}\!\left(\frac{\Lambda}{2}s^{2}+(\beta-b-a t)\,s\right)}
 ---
 
 
-## 1. Neutron density $n(t)$, using SciPyNumPy (16 digit precision)
+# 1. Neutron density $n(t)$, using SciPyNumPy (16 digit precision)
 <div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
   <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/Neutron_density_SciPyNumPy.py" 
      target="_blank" style="font-size:16px; color:#22577a; font-weight:bold;">
@@ -115,8 +115,9 @@ The script computes the neutron density $n(t)$ sequentially over the prescribed 
 **Computational Note on Optimization:**  
 While this implementation is mathematically accurate and functionally robust, it is **not** computationally optimized. Inside the main `Analytic_n` function, the routine `Constants_Ini_con` is invoked on every single time evaluation. Because the integration constants $A_1$ and $A_2$ depend solely on the initial conditions at $t=0$, recalculating them, normalizing the matrix, and solving the least-squares system at every time step introduces redundant computational overhead. An optimized version would precompute these constants once outside the time loop.
 
+---
 
-## 2. Neutron density $n(t)$, using mpmath (arbitrary precision)
+# 2. Neutron density $n(t)$, using mpmath (arbitrary precision)
 <div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
   <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/Neutron_density_mpmath.py" 
      target="_blank" style="font-size:16px; color:#22577a; font-weight:bold;">
@@ -135,7 +136,7 @@ This implementation is used as a benchmark to assess conditioning effects and to
 
 ---
 
-## 3. Delayed Precursors Density, $C(t)$, using SciPyNumPy
+# 3. Delayed Precursors Density, $C(t)$, using SciPyNumPy
 <div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
   <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/C_precursor_SciPyNumPy.py" 
      target="_blank" style="font-size:16px; color:#22577a; font-weight:bold;">
