@@ -36,7 +36,7 @@ e^{-\frac{1}{a}\!\left(\frac{\Lambda}{2}s^{2}+(\beta-b-a t)\,s\right)}
 ---
 
 
-### 1. Neutron density $n(t)$, using SciPyNumPy (16 digit precision)
+## 1. Neutron density $n(t)$, using SciPyNumPy (16 digit precision)
 <div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
   <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/Neutron_density_SciPyNumPy.py" 
      target="_blank" style="font-size:16px; color:#22577a; font-weight:bold;">
@@ -85,6 +85,7 @@ $$
 </div>
 
 to determine the constants $A_1$ and $A_2$ via a least-squares procedure (`numpy.linalg.lstsq`), including column-wise normalization for numerical stability.
+
 **Inputs & Numerical Parameters:**  
 The script receives physical, temporal, and numerical control parameters. Specifically, the integration tolerances and the maximum number of subintervals are explicitly defined to guarantee the stability of the adaptive quadrature routine used by `scipy.integrate.quad`. 
 *   `epsabs = 0.0`: Forces the algorithm to rely exclusively on relative error control.
@@ -115,7 +116,7 @@ The script computes the neutron density $n(t)$ sequentially over the prescribed 
 While this implementation is mathematically accurate and functionally robust, it is **not** computationally optimized. Inside the main `Analytic_n` function, the routine `Constants_Ini_con` is invoked on every single time evaluation. Because the integration constants $A_1$ and $A_2$ depend solely on the initial conditions at $t=0$, recalculating them, normalizing the matrix, and solving the least-squares system at every time step introduces redundant computational overhead. An optimized version would precompute these constants once outside the time loop.
 
 
-### 2. Neutron density $n(t)$, using mpmath (arbitrary precision)
+## 2. Neutron density $n(t)$, using mpmath (arbitrary precision)
 <div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
   <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/Neutron_density_mpmath.py" 
      target="_blank" style="font-size:16px; color:#22577a; font-weight:bold;">
@@ -134,7 +135,7 @@ This implementation is used as a benchmark to assess conditioning effects and to
 
 ---
 
-### 3. Delayed Precursors Density, $C(t)$, using SciPyNumPy
+## 3. Delayed Precursors Density, $C(t)$, using SciPyNumPy
 <div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
   <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/C_precursor_SciPyNumPy.py" 
      target="_blank" style="font-size:16px; color:#22577a; font-weight:bold;">
@@ -156,7 +157,7 @@ The function $n(t)$ is imported from `Neutron_density_SciPyNumPy.py`, and the sc
 
 ---
 
-### 4. Runge-Kutta, reference solver, using mpmath
+## 4. Runge-Kutta, reference solver, using mpmath
 <div style="padding:8px; border-left:4px solid #3c6e71; margin-bottom:10px;">
   <a href="https://github.com/Cruz-Lopez-Carlos-Antonio/Ramp_analytical_solution/blob/main/Runge-Kutta%204.py" 
      target="_blank" style="font-size:16px; color:#22577a; font-weight:bold;">
